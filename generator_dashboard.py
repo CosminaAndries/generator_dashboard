@@ -18,8 +18,6 @@ def procesare_fisier():
        df=pd.read_csv(fisiere_de_incarcat)
        st.write("Datele din fisiere")
        st.dataframe(df)
-   else:
-     st.write("Astept incarcarea fisierului")
  except Exception as e :
    st.error(f"Eroare la incarcarea fisierului!{e}")
     
