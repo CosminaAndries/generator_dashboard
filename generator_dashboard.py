@@ -38,7 +38,13 @@ if choice_of_which_chart_to_use=='Bar Chart' :
     horizontal=st.text_input('Do you want the bars to be placed horizontally?')
     horizontal=True if  horizontal=='Yes' else False
     color=st.text_input('If you want collor you can only use RGA color code or HEX code:')
-    stack=st.selectbox("Stacks(Implicit None):",("True","False","layered","center","normalize"))
+    stack=st.selectbox("Stacks(Implicit None):",("None","True","False","layered","center","normalize"))
+    if stack=="True":
+      stack=True
+    elif stack=="False":
+      stack=False
+    elif stack=="None":
+      stack=None
     width=st.number_input("Specify the width of the chart:")
     height=st.number_input("Specify the height of the chart:")
     grafic=st.bar_chart(data, x= x, y=y, x_label=x_label, y_label=y_label, color=color, horizontal= horizontal, stack=stack, width=width, height=height, use_container_width=True)
