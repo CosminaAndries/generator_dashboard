@@ -15,11 +15,11 @@ def procesare_fisier():
      if fisiere_de_incarcat.name.endswith(".json"):
        df=pd.read_json(fisiere_de_incarcat)
        st.write("The data found in the files")
-       st.session_state.data=st.dataframe(df)
+       st.session_state.data=df
      else :
        df=pd.read_csv(fisiere_de_incarcat)
        st.write("The data found in the files")
-       st.session_state.data=st.dataframe(df)
+       st.session_state.data=df
  except Exception as e :
    st.error(f"Eroare la incarcarea fisierului!{e}")
     
