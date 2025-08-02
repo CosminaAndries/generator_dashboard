@@ -14,18 +14,18 @@ def procesare_fisier():
    if fisiere_de_incarcat is not None :
      if fisiere_de_incarcat.name.endswith(".json"):
        df=pd.read_json(fisiere_de_incarcat)
-       st.write("Datele din fisiere")
+       st.write("The data found in the files")
        st.dataframe(df)
      else :
        df=pd.read_csv(fisiere_de_incarcat)
-       st.write("Datele din fisiere")
+       st.write("The data found in the files")
        st.dataframe(df)
  except Exception as e :
    st.error(f"Eroare la incarcarea fisierului!{e}")
     
 procesare_fisier();
 
-choice_of_which_chart_to_use=st.selectbox('What chart do you want your data to be displayed with?',('Bar Chart','Line Chart','Area Chart','Map Chart','Scatterplot Chart'))
+choice_of_which_chart_to_use=st.selectbox('What chart do you want your data to be displayed with?',('None','Bar Chart','Line Chart','Area Chart','Map Chart','Scatterplot Chart'))
 if choice_of_which_chart_to_use=='Bar Chart' :
    x=st.text_input("What column do you use fot the x-axis:")
    y=st.text_input("What column do you use fot the y-axis:")
