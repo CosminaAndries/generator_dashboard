@@ -7,7 +7,6 @@ st.markdown("<h3 style='font-size:24px'>Upload a date file:</h3>",unsafe_allow_h
 fisiere_de_incarcat=st.file_uploader(" ",type=["csv","json"])
 currenttheme="dark"
 themes=["dark","light","blue","pink"]
-data=None
 
 def procesare_fisier():
  try:
@@ -49,7 +48,7 @@ if choice_of_which_chart_to_use=='Bar Chart' :
       stack=None
     width=st.number_input("Specify the width of the chart:")
     height=st.number_input("Specify the height of the chart:")
-    grafic=st.bar_chart(data, x= x, y=y, x_label=x_label, y_label=y_label, color=color, horizontal= horizontal, stack=stack, width=width, height=height, use_container_width=True)
+    grafic=st.altair_chart(data, x= x, y=y, x_label=x_label, y_label=y_label, color=color, horizontal= horizontal, stack=stack, width=width, height=height, use_container_width=True)
     grafic
 else:
   st.info('Upload the files')
