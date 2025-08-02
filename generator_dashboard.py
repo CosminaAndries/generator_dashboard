@@ -30,15 +30,15 @@ if choice_of_which_chart_to_use=='Bar Chart' :
    x=st.text_input("What column do you use fot the x-axis:")
    y=st.text_input("What column do you use fot the y-axis:")
    df=pd.read_csv(fisiere_de_incarcat)
-   data=st.dataframe(df['{x}']['{y}'])
+   data=st.dataframe(df[[x,y]])
    x_label=st.text_input('x-label:')
    y_label=st.text_input('y label:')
    horizontal=st.text_input('Do you want the bars to be placed horizontally?')
    horizontal=True if  horizontal=='Yes' else False
-   color=st.input('If you want collor you can only use RGA color code or HEX code:')
+   color=st.text_input('If you want collor you can only use RGA color code or HEX code:')
    stack=st.selectbox("Stacks(Implicit None):",("True","False","layered","center","normalize"))
-   width=st.input("Specify the width of the chart:")
-   height=st.input("Specify the height of the chart:")
+   width=st.number_input("Specify the width of the chart:")
+   height=st.number_input("Specify the height of the chart:")
    grafic=st.bar_chart(data, x= x, y=y, x_label=x_label, y_label=y_label, color=color, horizontal= horizontal, stack=stack, width=width, height=height, use_container_width=True)
    grafic
    
