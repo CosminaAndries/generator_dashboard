@@ -31,7 +31,7 @@ if choice_of_which_chart_to_use=='Bar Chart' :
    df=st.session_state.data
    x=st.text_input("What column do you use fot the x-axis:")
    y=st.text_input("What column do you use fot the y-axis:")
-   if x and  y is not None  and x in df.columns and y in df.columns :
+   if x is not None and  y is not None  and x in df.columns and y in df.columns :
     data=st.dataframe(df[[x,y]])
     x_label=st.text_input('x-label:')
     y_label=st.text_input('y label:')
