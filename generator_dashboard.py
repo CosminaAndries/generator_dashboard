@@ -48,9 +48,10 @@ if choice_of_which_chart_to_use=='Bar Chart' :
       stack=None
     width=st.number_input("Specify the width of the chart:")
     height=st.number_input("Specify the height of the chart:")
-    grafic=st.altair_chart(data, x= x, y=y, x_label=x_label, y_label=y_label, color=color, horizontal= horizontal, stack=stack, width=width, height=height, use_container_width=True)
+    grafic=st.altair_chart(data).mark_bar().encode( x={'x'}, y={'y'}, color=color, horizontal= horizontal, stack=stack, width=width, height=height, use_container_width=True).properties(
+       x_label=x_label, y_label=y_label,
+    )
     grafic
-else:
-  st.info('Upload the files')
+
    
    
