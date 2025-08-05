@@ -29,9 +29,9 @@ procesare_fisier();
 choice_of_which_chart_to_use=st.selectbox('What chart do you want your data to be displayed with?',('None','Bar Chart','Line Chart','Area Chart','Map Chart','Scatterplot Chart'))
 if choice_of_which_chart_to_use=='Bar Chart' :
   if st.session_state.data is not None:
-   df=st.session_state.data
    x=st.text_input("What column do you use fot the x-axis:")
    y=st.text_input("What column do you use fot the y-axis:")
+   df=st.session_state.data
    if x is not None and  y is not None  and x in df.columns and y in df.columns :
     data=st.dataframe(df[[x,y]])
     x_label=st.text_input('x-label:')
