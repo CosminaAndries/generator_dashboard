@@ -123,5 +123,21 @@ elif choice_of_which_chart_to_use=='Histograms':
         data=img.read(),
         file_name=fn,
         mime="image/png"
+    else: 
+      plt.hist(df[x],bins=bins)
+      title=st.text_input('Title:')
+      label_x=st.text_input('Label for the values:')
+      label_y=st.text_input('Label for the frequency:')
+      plt.xlabel(label_x)
+      plt.ylabel(label_y)
+      plt.show()
+      fn='histogram.png'
+      plt.savefig(fn)
+      with open(fn,"rb") as img:
+        btn=st.download_button(
+        label="Download image",
+        data=img.read(),
+        file_name=fn,
+        mime="image/png"
       )
       
