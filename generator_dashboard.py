@@ -1,6 +1,7 @@
 
 import streamlit as st 
 import pandas as pd
+import altair as alt
 
 st.title("DashBoard Generator")
 st.markdown("<h3 style='font-size:24px'>Upload a date file:</h3>",unsafe_allow_html=True)
@@ -32,7 +33,7 @@ if choice_of_which_chart_to_use=='Bar Chart' :
    x=st.text_input("What column do you use fot the x-axis:")
    y=st.text_input("What column do you use fot the y-axis:")
    df=st.session_state.data
-   if x is not None and  y is not None  and x in df.columns and y in df.columns :
+   if x and  y  and x in df.columns and y in df.columns :
     data=st.dataframe(df[[x,y]])
     x_label=st.text_input('x-label:')
     y_label=st.text_input('y label:')
@@ -48,9 +49,7 @@ if choice_of_which_chart_to_use=='Bar Chart' :
       stack=None
     width=st.number_input("Specify the width of the chart:")
     height=st.number_input("Specify the height of the chart:")
-    grafic=st.altair_chart(data).mark_bar().encode( x={'x'}, y={'y'}, color=color, horizontal= horizontal, stack=stack, width=width, height=height, use_container_width=True).properties(
-       x_label=x_label, y_label=y_label,
-    )
+    grafic=st.bar_chart(data=df,x=x,y=y,x_label=x_label,y_label=y_label,color=color, horizontal=horizontal,stack=stack,width= width,height=height )
     grafic
 
    
