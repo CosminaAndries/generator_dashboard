@@ -1,7 +1,9 @@
-
+import io
 import streamlit as st 
 import pandas as pd
 import altair as alt
+import seaborn as sns
+import matplotlib.pyplot as plt
 
 st.title("DashBoard Generator")
 st.markdown("<h3 style='font-size:24px'>Upload a date file:</h3>",unsafe_allow_html=True)
@@ -44,6 +46,14 @@ if choice_of_which_chart_to_use=='Bar Chart' :
        color="#d59a75"
     grafic=st.bar_chart(data=df,x=x,y=y,color=color,horizontal=horizontal )
     grafic
-
+    fn='scatter.png'
+    plt.savefig(fn)
+   with open(fn,"rb") as img:
+      btn=st.download_button(
+       label="Download image",
+       data=img.read(),
+       file_name=fn,
+       mime="image/png"
+      )
    
    
