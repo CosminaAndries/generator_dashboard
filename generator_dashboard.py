@@ -93,10 +93,10 @@ elif choice_of_which_chart_to_use=='Histograms':
   if st.session_state is not None:
     df=st.session_state.data
     x=st.text_input("The values:")
-    bins=st.text_input("Bins:")
+    bins = st.number_input("Bins:", min_value=1, max_value=100, value=10, step=1)
     optiuni_avansate=st.checkbox("Advance Options")
     if optiuni_avansate==True:
-      density=st.number_input('Density:')
+      density = st.checkbox('Density') 
       #range=st.number_input('Range:')
       histtype=st.select_box("Default","barstacked","step","stepfilled")
       if histtype=="Default":
@@ -114,7 +114,7 @@ elif choice_of_which_chart_to_use=='Histograms':
       label_y=st.text_input('Label for the frequency:')
       plt.xlabel(label_x)
       plt.ylabel(label_y)
-      plt.show()
+      plt.pyplot()
       fn='histogram.png'
       plt.savefig(fn)
       with open(fn,"rb") as img:
@@ -130,7 +130,7 @@ elif choice_of_which_chart_to_use=='Histograms':
       label_y=st.text_input('Label for the frequency:')
       plt.xlabel(label_x)
       plt.ylabel(label_y)
-      plt.show()
+      plt.pyplot()
       fn='histogram.png'
       plt.savefig(fn)
       with open(fn,"rb") as img:
