@@ -41,10 +41,9 @@ if choice_of_which_chart_to_use=='Bar Chart' :
     if color=="None"or color=="No":
        color="#d59a75"
     grafic=st.bar_chart(data=df,x=x,y=y,color=color,horizontal=horizontal )
-    grafic
     fn='scatter.png'
     plt.savefig(fn)
-   with open(fn,"rb") as img:
+    with open(fn,"rb") as img:
       btn=st.download_button(
        label="Download image",
        data=img.read(),
@@ -66,14 +65,13 @@ elif choice_of_which_chart_to_use=='Line Chart' :
       if color=="None"or color=="No":
        color="#d59a75"
        grafic=st.line_chart(data=df,x=x,y=y,color=color,horizontal=horizontal )
-       grafic
        fn='scatter.png'
        plt.savefig(fn)
-    with open(fn,"rb") as img:
-      btn=st.download_button(
-       label="Download image",
-       data=img.read(),
-       file_name=fn,
-       mime="image/png"
+       with open(fn,"rb") as img:
+        btn=st.download_button(
+        label="Download image",
+        data=img.read(),
+        file_name=fn,
+        mime="image/png"
       )
    
