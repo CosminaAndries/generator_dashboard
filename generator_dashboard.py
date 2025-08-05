@@ -7,8 +7,6 @@ import matplotlib.pyplot as plt
 st.title("DashBoard Generator")
 st.markdown("<h3 style='font-size:24px'>Upload a date file:</h3>",unsafe_allow_html=True)
 fisiere_de_incarcat=st.file_uploader(" ",type=["csv","json"])
-currenttheme="dark"
-themes=["dark","light","blue","pink"]
 
 def procesare_fisier():
  try:
