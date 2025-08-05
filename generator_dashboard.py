@@ -25,7 +25,7 @@ def procesare_fisier():
     
 procesare_fisier();
 
-choice_of_which_chart_to_use=st.selectbox('What chart do you want your data to be displayed with?',('None','Bar Chart','Line Chart','Area Chart','Map Chart','Scatterplot Chart'))
+choice_of_which_chart_to_use=st.selectbox('What chart do you want your data to be displayed with?',('None','Bar Chart','Line Chart','Area Chart','Map Chart','Scatterplot Chart','Histograms'))
 if choice_of_which_chart_to_use=='Bar Chart' :
   if st.session_state.data is not None:
    x=st.text_input("What column do you use fot the x-axis:")
@@ -94,10 +94,10 @@ elif choice_of_which_chart_to_use=='Histograms':
     df=st.session_state.data
     x=st.text_input("The values:")
     bins=st.text_input("Bins:")
-    optiuni_avansate=st.checkbox()
+    optiuni_avansate=st.checkbox("Advance Options")
     if optiuni_avansate==True:
       density=st.number_input('Density:')
-      range=st.number_input('Range:')
+      #range=st.number_input('Range:')
       histtype=st.select_box("Default","barstacked","step","stepfilled")
       if histtype=="Default":
         histtype="bar"
@@ -108,11 +108,20 @@ elif choice_of_which_chart_to_use=='Histograms':
         log=True
       elif log=='no'or log=='No':
         log=False
-      plt.hist(data=df[x],bins=bins,color=color,histtype=histtype,align=align, log=log,density=density,range=range)
+      plt.hist(df[x],bins=bins,color=color,histtype=histtype,align=align, log=log,density=density)
       title=st.text_input('Title:')
       label_x=st.text_input('Label for the values:')
       label_y=st.text_input('Label for the frequency:')
-      plt.xlabel(f'{label_x}')
-      plt.ylabel(f'{label_y}')
+      plt.xlabel(label_x)
+      plt.ylabel(label_y)
       plt.show()
+      fn='histogram.png'
+      plt.savefig(fn)
+      with open(fn,"rb") as img:
+        btn=st.download_button(
+        label="Download image",
+        data=img.read(),
+        file_name=fn,
+        mime="image/png"
+      )
       
