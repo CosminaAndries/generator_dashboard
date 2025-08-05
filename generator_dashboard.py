@@ -119,10 +119,10 @@ elif choice_of_which_chart_to_use=='Histograms':
       plt.savefig(fn)
       with open(fn,"rb") as img:
         btn=st.download_button(
-        label="Download image",
-        data=img.read(),
-        file_name=fn,
-        mime="image/png"
+         label="Download image",
+         data=img.read(),
+         file_name=fn,
+         mime="image/png")
     else: 
       plt.hist(df[x],bins=bins)
       title=st.text_input('Title:')
