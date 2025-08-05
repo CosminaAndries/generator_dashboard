@@ -59,12 +59,10 @@ elif choice_of_which_chart_to_use=='Line Chart' :
       data=st.dataframe(df[[x,y]])
       x_label=st.text_input('x-label:')
       y_label=st.text_input('y label:')
-      horizontal=st.text_input('Do you want the bars to be placed horizontally?')
-      horizontal=True if  horizontal=='Yes' else False
       color=st.text_input('If you want collor you can only use RGA color code or HEX code:')
       if color=="None"or color=="No":
        color="#d59a75"
-       grafic=st.line_chart(data=df,x=x,y=y,color=color,horizontal=horizontal )
+       grafic=st.line_chart(data=df,x=x,y=y,color=color )
        fn='scatter.png'
        plt.savefig(fn)
        with open(fn,"rb") as img:
