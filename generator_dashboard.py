@@ -54,7 +54,7 @@ if choice_of_which_chart_to_use=='Bar Chart' :
        file_name=fn,
        mime="image/png"
       )
-  if choice_of_which_chart_to_use=='Line Chart' :
+elif choice_of_which_chart_to_use=='Line Chart' :
    if st.session_state.data is not None:
     x=st.text_input("What column do you use fot the x-axis:")
     y=st.text_input("What column do you use fot the y-axis:")
