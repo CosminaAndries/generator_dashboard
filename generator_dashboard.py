@@ -52,7 +52,7 @@ if choice_of_which_chart_to_use=='Bar Chart' :
        mime="image/png"
       )
 elif choice_of_which_chart_to_use=='Line Chart' :
-   if st.session_state.data is not None:
+  if st.session_state.data is not None:
     x=st.text_input("What column do you use fot the x-axis:")
     y=st.text_input("What column do you use fot the y-axis:")
     df=st.session_state.data
@@ -67,9 +67,9 @@ elif choice_of_which_chart_to_use=='Line Chart' :
        color="#d59a75"
        grafic=st.line_chart(data=df,x=x,y=y,color=color,horizontal=horizontal )
        grafic
-    fn='scatter.png'
-    plt.savefig(fn)
-   with open(fn,"rb") as img:
+       fn='scatter.png'
+       plt.savefig(fn)
+    with open(fn,"rb") as img:
       btn=st.download_button(
        label="Download image",
        data=img.read(),
