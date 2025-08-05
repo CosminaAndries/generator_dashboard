@@ -51,3 +51,29 @@ if choice_of_which_chart_to_use=='Bar Chart' :
        file_name=fn,
        mime="image/png"
       )
+elif choice_of_which_chart_to_use=='Line Chart' :
+   if st.session_state.data is not None:
+    x=st.text_input("What column do you use fot the x-axis:")
+    y=st.text_input("What column do you use fot the y-axis:")
+    df=st.session_state.data
+    if x and  y  and x in df.columns and y in df.columns :
+      data=st.dataframe(df[[x,y]])
+      x_label=st.text_input('x-label:')
+      y_label=st.text_input('y label:')
+      horizontal=st.text_input('Do you want the bars to be placed horizontally?')
+      horizontal=True if  horizontal=='Yes' else False
+      color=st.text_input('If you want collor you can only use RGA color code or HEX code:')
+      if color=="None"or color=="No":
+       color="#d59a75"
+       grafic=st.line_chart(data=df,x=x,y=y,color=color,horizontal=horizontal )
+       grafic
+    fn='scatter.png'
+    plt.savefig(fn)
+   with open(fn,"rb") as img:
+      btn=st.download_button(
+       label="Download image",
+       data=img.read(),
+       file_name=fn,
+       mime="image/png"
+      )
+   
