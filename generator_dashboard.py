@@ -41,7 +41,7 @@ if choice_of_which_chart_to_use=='Bar Chart' :
     if color=="None"or color=="No":
        color="#d59a75"
     grafic=st.bar_chart(data=df,x=x,y=y,color=color,horizontal=horizontal )
-    fn='scatter.png'
+    fn='bar.png'
     plt.savefig(fn)
     with open(fn,"rb") as img:
       btn=st.download_button(
@@ -72,4 +72,47 @@ elif choice_of_which_chart_to_use=='Line Chart' :
         file_name=fn,
         mime="image/png"
       )
-   
+elif choice_of_which_chart_to_use=='Map Chart' :
+  if st.session_state.data is not None:
+    latitude=st.text_input("Latitude:")
+    longitude=st.text_input("Longitude:")
+    df=st.session_state.data
+    if latitude and  longitude  and latitude in df.columns and longitude in df.columns :
+      data=st.dataframe(df[[latitude,longitude]])
+      grafic=st.map(latitude=latitude,longitude=longitude )
+      fn='map.png'
+      plt.savefig(fn)
+      with open(fn,"rb") as img:
+        btn=st.download_button(
+        label="Download image",
+        data=img.read(),
+        file_name=fn,
+        mime="image/png"
+      )
+elif choice_of_which_chart_to_use=='Histograms':
+  if st.session_state is not None:
+    df=st.session_state.data
+    x=st.text_input("The values:")
+    bins=st.text_input("Bins:")
+    optiuni_avansate=st.checkbox()
+    if optiuni_avansate==True:
+      density=st.number_input('Density:')
+      range=st.number_input('Range:')
+      histtype=st.select_box("Default","barstacked","step","stepfilled")
+      if histtype=="Default":
+        histtype="bar"
+      align=st.select_box("low","mid","right")
+      color=st.text_input("Color:")
+      log=st.text_input("Log Scale:")
+      if log=='yes' or log== 'Yes' :
+        log=True
+      elif log=='no'or log=='No':
+        log=False
+      plt.hist(data=df[x],bins=bins,color=color,histtype=histtype,align=align, log=log,density=density,range=range)
+      title=st.text_input('Title:')
+      label_x=st.text_input('Label for the values:')
+      label_y=st.text_input('Label for the frequency:')
+      plt.xlabel(f'{label_x}')
+      plt.ylabel(f'{label_y}')
+      plt.show()
+      
