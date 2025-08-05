@@ -114,7 +114,7 @@ elif choice_of_which_chart_to_use=='Histograms':
       label_y=st.text_input('Label for the frequency:')
       plt.xlabel(label_x)
       plt.ylabel(label_y)
-      plt.pyplot()
+      st.pyplot(plt)
       fn='histogram.png'
       plt.savefig(fn)
       with open(fn,"rb") as img:
@@ -130,7 +130,7 @@ elif choice_of_which_chart_to_use=='Histograms':
       label_y=st.text_input('Label for the frequency:')
       plt.xlabel(label_x)
       plt.ylabel(label_y)
-      plt.pyplot()
+      st.pyplot(plt)
       fn='histogram.png'
       plt.savefig(fn)
       with open(fn,"rb") as img:
