@@ -42,7 +42,7 @@ if choice_of_which_chart_to_use=='Bar Chart' :
     color=st.text_input('If you want collor you can only use RGA color code or HEX code:')
     if color=="None"or color=="No":
        color="#d59a75"
-    grafic=st.bar_chart(data=df,x=x,y=y,color=color )
+    grafic=st.bar_chart(data=df,x=x,y=y,color=color,horizontal=horizontal )
     grafic
 
    
