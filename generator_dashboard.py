@@ -49,7 +49,7 @@ if choice_of_which_chart_to_use=='Bar Chart' :
       stack=None
     width=st.number_input("Specify the width of the chart:")
     height=st.number_input("Specify the height of the chart:")
-    grafic=st.bar_chart(data=df,x=x,y=y,x_label=x_label,y_label=y_label,color=color, horizontal=horizontal,stack=stack,width= width,height=height )
+    grafic=st.bar_chart(data=df,x=x,y=y,color=color )
     grafic
 
    
