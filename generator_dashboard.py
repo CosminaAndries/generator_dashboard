@@ -140,4 +140,47 @@ elif choice_of_which_chart_to_use=='Histograms':
         file_name=fn,
         mime="image/png"
       )
+elif choice_of_which_chart_to_use=='Pie Charts':
+  if st.session_state is not None:
+    df=st.session_state.data
+    x=st.text_input("The values:")
+    optiuni_avansate=st.checkbox("Advance Options")
+    if optiuni_avansate==True:
+      shadow = st.selectbox("Shadow"('Yes','No') )
+      if shadow=='Yes':
+        shadow=True
+      else:
+        shadow=False
+      start_angle= st.number_input("Start angle:")
+      color = st.text_input("Colors (separate with commas):")
+      color = [c.strip() for c in color.split(',')] if color else None
+      autopunct= '%1.1f%%'
+      labels = st.text_input('Labels (separate with commas):')
+      labels = [lbl.strip() for lbl in labels.split(',')] if labels else None
+      plt.pie(data=df[x],color=color,autopct= autopunct,startangle=start_angle, labels=labels)
+      title=st.text_input('Title:')
+      st.pyplot(plt)
+      fn='pie.png'
+      plt.savefig(fn)
+      with open(fn,"rb") as img:
+        btn=st.download_button(
+         label="Download image",
+         data=img.read(),
+         file_name=fn,
+         mime="image/png")
+    else:
+      labels = st.text_input('Labels (separate with commas):')
+      labels = [lbl.strip() for lbl in labels.split(',')] if labels else None
+      plt.pie(df[x],labels=labels)
+      title=st.text_input('Title:')
+      st.pyplot(plt)
+      fn='pie_chart.png'
+      plt.savefig(fn)
+      with open(fn,"rb") as img:
+        btn=st.download_button(
+        label="Download image",
+        data=img.read(),
+        file_name=fn,
+        mime="image/png"
+      )
       
