@@ -146,7 +146,7 @@ elif choice_of_which_chart_to_use=='Pie Chart':
     x=st.text_input("The values:")
     optiuni_avansate=st.checkbox("Advance Options")
     if optiuni_avansate==True:
-      shadow = st.selectbox("Shadow"('Yes','No') )
+      shadow = st.selectbox("Shadow",('Yes','No') )
       if shadow=='Yes':
         shadow=True
       else:
