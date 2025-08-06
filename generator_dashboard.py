@@ -156,7 +156,7 @@ elif choice_of_which_chart_to_use=='Pie Chart':
       color = [c.strip() for c in color.split(',')] if color else None
       autopunct= '%1.1f%%'
       labels = st.text_input('Labels (separate with commas):')
-      labels = [lbl.strip() for lbl in labels.split(',')] if labels else None
+      labels = [str(lbl).strip() for lbl in labels.split(',')] if labels else None
       plt.pie(data=df[x],color=color,autopct= autopunct,startangle=start_angle, labels=labels)
       title=st.text_input('Title:')
       st.pyplot(plt)
@@ -170,7 +170,7 @@ elif choice_of_which_chart_to_use=='Pie Chart':
          mime="image/png")
     else:
       labels = st.text_input('Labels (separate with commas):')
-      labels = [lbl.strip() for lbl in labels.split(',')] if labels else None
+      labels = [str(lbl).strip() for lbl in labels.split(',')] if labels else None
       plt.pie(df[x],labels=labels)
       title=st.text_input('Title:')
       st.pyplot(plt)
