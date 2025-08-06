@@ -25,7 +25,7 @@ def procesare_fisier():
     
 procesare_fisier();
 
-choice_of_which_chart_to_use=st.selectbox('What chart do you want your data to be displayed with?',('None','Bar Chart','Line Chart','Area Chart','Map Chart','Scatterplot Chart','Histograms'))
+choice_of_which_chart_to_use=st.selectbox('What chart do you want your data to be displayed with?',('None','Bar Chart','Line Chart','Area Chart','Map Chart','Scatterplot Chart','Histograms','Pie Chart'))
 if choice_of_which_chart_to_use=='Bar Chart' :
   if st.session_state.data is not None:
    x=st.text_input("What column do you use fot the x-axis:")
@@ -140,7 +140,7 @@ elif choice_of_which_chart_to_use=='Histograms':
         file_name=fn,
         mime="image/png"
       )
-elif choice_of_which_chart_to_use=='Pie Charts':
+elif choice_of_which_chart_to_use=='Pie Chart':
   if st.session_state is not None:
     df=st.session_state.data
     x=st.text_input("The values:")
