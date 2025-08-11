@@ -5,6 +5,7 @@ import altair as alt
 import matplotlib.pyplot as plt
 
 def app():
+    
  st.title("Chart")
  fisiere_de_incarcat=st.file_uploader(" ",type=["csv","json"])
  def procesare_fisier():
