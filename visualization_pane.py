@@ -4,7 +4,21 @@ import pandas as pd
 import altair as alt
 import matplotlib.pyplot as plt
 
-
+def procesare_fisier(fisiere_de_incarcat):
+   try:
+    if fisiere_de_incarcat is not None :
+     if fisiere_de_incarcat.name.endswith(".json"):
+       df=pd.read_json(fisiere_de_incarcat)
+       st.write("The data found in the files")
+       st.session_state.data=df
+       st.dataframe(df)
+     else :
+       df=pd.read_csv(fisiere_de_incarcat)
+       st.write("The data found in the files")
+       st.session_state.data=df
+       st.dataframe(df)
+   except Exception as e :
+    st.error(f"Eroare la incarcarea fisierului!{e}")
 def app():
   st.title("Chart")
   fisiere_de_incarcat=st.file_uploader(" ",type=["csv","json"])
@@ -168,18 +182,4 @@ def app():
         file_name=fn,
         mime="image/png"
       )
-  def procesare_fisier(fisiere_de_incarcat):
-   try:
-    if fisiere_de_incarcat is not None :
-     if fisiere_de_incarcat.name.endswith(".json"):
-       df=pd.read_json(fisiere_de_incarcat)
-       st.write("The data found in the files")
-       st.session_state.data=df
-       st.dataframe(df)
-     else :
-       df=pd.read_csv(fisiere_de_incarcat)
-       st.write("The data found in the files")
-       st.session_state.data=df
-       st.dataframe(df)
-   except Exception as e :
-    st.error(f"Eroare la incarcarea fisierului!{e}")
+ 
