@@ -5,6 +5,8 @@ import altair as alt
 import matplotlib.pyplot as plt
 from streamlit_option_menu import option_menu
 
+if "data" not in st.session_state:
+    st.session_state.data = None
 
 def procesare_fisier(fisiere_de_incarcat):
    try:
