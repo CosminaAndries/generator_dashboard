@@ -81,9 +81,9 @@ def app():
     df=st.session_state.data
     latitude=st.selectbox("Latitude:",options=df.columns)
     longitude=st.selectbox("Longitude:",options=df.columns)
-    st.write(df.columns)
     if latitude and  longitude  and latitude in df.columns and longitude in df.columns :
-      data=st.dataframe(df[[latitude,longitude]])
+      data=st.dataframe(df[[latitude,longitude]]).copy
+      data.columns=['lat','lon']
       grafic=st.map(data)
       fn='map.png'
       plt.savefig(fn)
