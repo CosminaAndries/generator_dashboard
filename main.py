@@ -3,13 +3,13 @@ import pandas as pd
 import altair as alt
 import matplotlib.pyplot as plt
 from streamlit_option_menu import option_menu
-import visualization_pane, data_cleaning_pane
+import visualization_pane, data_cleaning_pane,home
 
 st.title("DashBoard Generator")
 st.markdown("<h3 style='font-size:24px'>Upload a date file:</h3>",unsafe_allow_html=True)
 fisiere_de_incarcat=st.file_uploader(" ",type=["csv","json"])
 
-#page=st.sidebar.radio("Navigare",['Main',"DataCleaning","Visualization"])
+
 def procesare_fisier():
   try:
    if fisiere_de_incarcat is not None :
@@ -26,9 +26,6 @@ def procesare_fisier():
   except Exception as e :
    st.error(f"Eroare la incarcarea fisierului!{e}")
   
-st.markdown("<h3 style='font-size:24px'>Upload a date file:</h3>",unsafe_allow_html=True)
-fisiere_de_incarcat=st.file_uploader(" ",type=["csv","json"])
-visualize_button=st.clean_button("Visualize Data")
 st.set_page_config(
   page_title="Home Page"
 )
@@ -53,7 +50,10 @@ class Multiapp:
           }
       )
       if app=="Home":
-        home.run()
+        home.app()
+      elif app=="Visualization":
+        visualization_pane.app()
+      elif app=="Cleaning":
+        data_cleaning_pane.cleaning.app()
       
-    
-      
+  run()
