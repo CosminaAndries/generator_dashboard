@@ -39,9 +39,9 @@ class Multiapp:
      with st.sidebar:
       app=option_menu(
         menu_title="Menu",
-        menu_icon=st.image("menu.png",width=30),
+        menu_icon="list",
         options=['Home','Cleaning','Visualization'],     
-        icons=[st.image('home.png',width=30),st.image('broom.png',width=30),st.image('bar_chart.png',width=30)],
+        icons=['home','broom' ,'bar_chart'],
         styles={
           "icon":{ "color":"white", "font-size":"23px"},
           "nav-link":{"color":"white", "font-size":"23px","text-align":"left","--hover-color":"blue"},
