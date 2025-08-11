@@ -3,13 +3,11 @@ import pandas as pd
 import altair as alt
 import matplotlib.pyplot as plt
 from streamlit_option_menu import option_menu
-import visualization_pane, data_cleaning_pane,home
+import home, data_cleaning_pane,visualization_pane
 
 st.title("DashBoard Generator")
 st.markdown("<h3 style='font-size:24px'>Upload a date file:</h3>",unsafe_allow_html=True)
 fisiere_de_incarcat=st.file_uploader(" ",type=["csv","json"])
-
-
 def procesare_fisier():
   try:
    if fisiere_de_incarcat is not None :
