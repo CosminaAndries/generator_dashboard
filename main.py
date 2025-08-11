@@ -37,7 +37,10 @@ class Multiapp:
          page_title="Visualization Page"
             )
         visualization_pane.app()
-     elif app=="Data Cleaning":
+     elif app=="Cleaning":
+        st.set_page_config(
+         page_title="Data Cleaning Page"
+            )
         data_cleaning_pane.cleaning.app()
       
   run()
