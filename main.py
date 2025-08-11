@@ -29,12 +29,15 @@ class Multiapp:
       )
      if app=="Home":
        st.set_page_config(
-         page_title="Data Cleaning Page"
+         page_title="Home Page"
             )
        home.app()
      elif app=="Visualization":
+        st.set_page_config(
+         page_title="Visualization Page"
+            )
         visualization_pane.app()
-     elif app=="Cleaning":
+     elif app=="Data Cleaning":
         data_cleaning_pane.cleaning.app()
       
   run()
