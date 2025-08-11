@@ -43,7 +43,7 @@ class Multiapp:
         options=['Home','Cleaning','Visualization'],     
         icons=['home.png','broom.png','bar-chart.png'],
         styles={
-          "icon":{ "color":"white", "font-size":"23px"},
+          #"icon":{ "color":"white", "font-size":"23px"},
           "nav-link":{"color":"white", "font-size":"23px","text-align":"left","--hover-color":"blue"},
           "nav-link-selected":{"background-color":"#02ab21"},
           }
