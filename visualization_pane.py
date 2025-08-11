@@ -3,6 +3,11 @@ import streamlit as st
 import pandas as pd
 import altair as alt
 import matplotlib.pyplot as plt
+from streamlit_option_menu import option_menu
+
+st.set_page_config(
+  page_title="Visualizations Page"
+)
 
 if "data" not in st.session_state:
  st.session_state.data=None
