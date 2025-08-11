@@ -5,9 +5,7 @@ import altair as alt
 import matplotlib.pyplot as plt
 from streamlit_option_menu import option_menu
 
-if "data" not in st.session_state:
- st.session_state.data=None
- df=None
+
 def procesare_fisier(fisiere_de_incarcat):
    try:
     if fisiere_de_incarcat is not None :
@@ -26,6 +24,7 @@ def procesare_fisier(fisiere_de_incarcat):
     st.error(f"Eroare la incarcarea fisierului!{e}")
 def app():
   st.title("Chart")
+  df=None
   fisiere_de_incarcat=st.file_uploader(" ",type=["csv","json"])
   procesare_fisier( fisiere_de_incarcat)
   choice_of_which_chart_to_use=st.selectbox('What chart do you want your data to be displayed with?',('None','Bar Chart','Line Chart','Area Chart','Map Chart','Scatterplot Chart','Histograms','Pie Chart'))
