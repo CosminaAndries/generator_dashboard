@@ -4,9 +4,12 @@ import altair as alt
 import matplotlib.pyplot as plt
 from streamlit_option_menu import  option_menu
 
+st.set_page_config(
+  page_title="Home Page"
+)
 def app():
  st.title("DashBoard Generator")
- st.markdown("<h3 style='font-size:24px'>Upload a date file:</h3>",unsafe_allow_html=True)
+ st.markdown("<h3 style='font-size:24px'>Welcome to my app!</h3>",unsafe_allow_html=True)
  fisiere_de_incarcat=st.file_uploader(" ",type=["csv","json"])
  def procesare_fisier():
   try:
@@ -24,7 +27,5 @@ def app():
   except Exception as e :
    st.error(f"Eroare la incarcarea fisierului!{e}")
   
-st.set_page_config(
-  page_title="Home Page"
-)
+
 
