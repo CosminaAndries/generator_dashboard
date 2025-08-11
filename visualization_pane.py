@@ -5,12 +5,9 @@ import altair as alt
 import matplotlib.pyplot as plt
 from streamlit_option_menu import option_menu
 
-st.set_page_config(
-  page_title="Visualizations Page"
-)
-
 if "data" not in st.session_state:
  st.session_state.data=None
+ df=None
 def procesare_fisier(fisiere_de_incarcat):
    try:
     if fisiere_de_incarcat is not None :
