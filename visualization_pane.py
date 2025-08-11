@@ -12,21 +12,19 @@ def procesare_fisier(fisiere_de_incarcat):
        st.write("The data found in the files")
        st.session_state.data=df
        st.dataframe(df)
-       return True
      else :
        df=pd.read_csv(fisiere_de_incarcat)
        st.write("The data found in the files")
        st.session_state.data=df
        st.dataframe(df)
-       return False
+
    except Exception as e :
     st.error(f"Eroare la incarcarea fisierului!{e}")
 def app():
   st.title("Chart")
   fisiere_de_incarcat=st.file_uploader(" ",type=["csv","json"])
-  if procesare_fisier(fisiere_de_incarcat)==True: 
-   choice_of_which_chart_to_use=st.selectbox('What chart do you want your data to be displayed with?',('None','Bar Chart','Line Chart','Area Chart','Map Chart','Scatterplot Chart','Histograms','Pie Chart'))
-   if choice_of_which_chart_to_use=='Bar Chart' :
+  choice_of_which_chart_to_use=st.selectbox('What chart do you want your data to be displayed with?',('None','Bar Chart','Line Chart','Area Chart','Map Chart','Scatterplot Chart','Histograms','Pie Chart'))
+  if choice_of_which_chart_to_use=='Bar Chart' :
     if st.session_state.data is not None:
      x=st.text_input("What column do you use for the x-axis:")
      y=st.text_input("What column do you use for the y-axis:")
