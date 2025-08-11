@@ -25,6 +25,7 @@ def procesare_fisier(fisiere_de_incarcat):
 def app():
   st.title("Chart")
   fisiere_de_incarcat=st.file_uploader(" ",type=["csv","json"])
+  procesare_fisier( fisiere_de_incarcat)
   choice_of_which_chart_to_use=st.selectbox('What chart do you want your data to be displayed with?',('None','Bar Chart','Line Chart','Area Chart','Map Chart','Scatterplot Chart','Histograms','Pie Chart'))
   if choice_of_which_chart_to_use=='Bar Chart' :
     if st.session_state.data is not None:
