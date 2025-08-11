@@ -20,7 +20,7 @@ class Multiapp:
         menu_title="Menu",
         menu_icon="list",
         options=['Home','Cleaning','Visualization'],     
-        icons=['house','broom' ,'chart-bar'],
+        icons=['house','trash' ,'chart-line'],
         styles={
           "icon":{ "color":"white", "font-size":"23px"},
           "nav-link":{"color":"white", "font-size":"20px","text-align":"left","margin":"0px","--hover-color":"blue"},
