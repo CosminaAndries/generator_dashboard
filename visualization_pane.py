@@ -170,7 +170,7 @@ def app():
          data=img.read(),
          file_name=fn,
          mime="image/png")
-  else:
+    else:
       labels = st.text_input('Labels (separate with commas):')
       labels = [str(lbl).strip() for lbl in labels.split(',')] if labels else None
       plt.pie(df[x],labels=labels)
