@@ -12,11 +12,13 @@ def procesare_fisier(fisiere_de_incarcat):
        st.write("The data found in the files")
        st.session_state.data=df
        st.dataframe(df)
+       return True
      else :
        df=pd.read_csv(fisiere_de_incarcat)
        st.write("The data found in the files")
        st.session_state.data=df
        st.dataframe(df)
+       return False
    except Exception as e :
     st.error(f"Eroare la incarcarea fisierului!{e}")
 def app():
