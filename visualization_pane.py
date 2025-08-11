@@ -4,16 +4,16 @@ import pandas as pd
 import altair as alt
 import matplotlib.pyplot as plt
 
-st.set_page_config(
-  page_title="Visualization Page"
-)
+
 def app():
-    
- st.title("Chart")
- fisiere_de_incarcat=st.file_uploader(" ",type=["csv","json"])
- def procesare_fisier():
-  try:
-   if fisiere_de_incarcat is not None :
+  st.set_page_config(
+  page_title="Visualization Page"
+  )
+  st.title("Chart")
+  fisiere_de_incarcat=st.file_uploader(" ",type=["csv","json"])
+  def procesare_fisier():
+   try:
+    if fisiere_de_incarcat is not None :
      if fisiere_de_incarcat.name.endswith(".json"):
        df=pd.read_json(fisiere_de_incarcat)
        st.write("The data found in the files")
@@ -24,11 +24,11 @@ def app():
        st.write("The data found in the files")
        st.session_state.data=df
        st.dataframe(df)
-  except Exception as e :
-   st.error(f"Eroare la incarcarea fisierului!{e}")
- choice_of_which_chart_to_use=st.selectbox('What chart do you want your data to be displayed with?',('None','Bar Chart','Line Chart','Area Chart','Map Chart','Scatterplot Chart','Histograms','Pie Chart'))
- if choice_of_which_chart_to_use=='Bar Chart' :
-  if st.session_state.data is not None:
+   except Exception as e :
+    st.error(f"Eroare la incarcarea fisierului!{e}")
+  choice_of_which_chart_to_use=st.selectbox('What chart do you want your data to be displayed with?',('None','Bar Chart','Line Chart','Area Chart','Map Chart','Scatterplot Chart','Histograms','Pie Chart'))
+  if choice_of_which_chart_to_use=='Bar Chart' :
+   if st.session_state.data is not None:
      x=st.text_input("What column do you use fot the x-axis:")
      y=st.text_input("What column do you use fot the y-axis:")
      df=st.session_state.data
@@ -51,8 +51,8 @@ def app():
        file_name=fn,
        mime="image/png"
       )
- elif choice_of_which_chart_to_use=='Line Chart' :
-  if st.session_state.data is not None:
+  elif choice_of_which_chart_to_use=='Line Chart' :
+   if st.session_state.data is not None:
     x=st.text_input("What column do you use fot the x-axis:")
     y=st.text_input("What column do you use fot the y-axis:")
     df=st.session_state.data
@@ -73,7 +73,7 @@ def app():
         file_name=fn,
         mime="image/png"
       )
- elif choice_of_which_chart_to_use=='Map Chart' :
+  elif choice_of_which_chart_to_use=='Map Chart' :
    if st.session_state.data is not None:
     latitude=st.text_input("Latitude:")
     longitude=st.text_input("Longitude:")
@@ -90,7 +90,7 @@ def app():
         file_name=fn,
         mime="image/png"
       )
- elif choice_of_which_chart_to_use=='Histograms':
+  elif choice_of_which_chart_to_use=='Histograms':
    if st.session_state is not None:
     df=st.session_state.data
     x=st.text_input("The values:")
@@ -142,7 +142,7 @@ def app():
         file_name=fn,
         mime="image/png"
       )
- elif choice_of_which_chart_to_use=='Pie Chart':
+  elif choice_of_which_chart_to_use=='Pie Chart':
    if st.session_state is not None:
     df=st.session_state.data
     x=st.text_input("The values:")
@@ -170,7 +170,7 @@ def app():
          data=img.read(),
          file_name=fn,
          mime="image/png")
- else:
+  else:
       labels = st.text_input('Labels (separate with commas):')
       labels = [str(lbl).strip() for lbl in labels.split(',')] if labels else None
       plt.pie(df[x],labels=labels)
