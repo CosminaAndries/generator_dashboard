@@ -78,9 +78,9 @@ def app():
       )
   elif choice_of_which_chart_to_use=='Map Chart' :
    if st.session_state.data is not None:
+    df=st.session_state.data
     latitude=st.selectbox("Latitude:",options=df.columns)
     longitude=st.selectbox("Longitude:",options=df.columns)
-    df=st.session_state.data
     st.write(df.columns)
     if latitude and  longitude  and latitude in df.columns and longitude in df.columns :
       data=st.dataframe(df[[latitude,longitude]])
