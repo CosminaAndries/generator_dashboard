@@ -84,7 +84,6 @@ def app():
     st.write(df.columns)
     if latitude and  longitude  and latitude in df.columns and longitude in df.columns :
       data=st.dataframe(df[[latitude,longitude]])
-      data.columns["lat","lot"]
       grafic=st.map(data)
       fn='map.png'
       plt.savefig(fn)
