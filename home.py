@@ -6,8 +6,6 @@ from streamlit_option_menu import  option_menu
 
 def app():
  st.title("DashBoard Generator")
- st.markdown("<h3 style='font-size:24px'>Welcome to my app! </h3>",unsafe_allow_html=True)
- st.title("DashBoard Generator")
  st.markdown("<h3 style='font-size:24px'>Upload a date file:</h3>",unsafe_allow_html=True)
  fisiere_de_incarcat=st.file_uploader(" ",type=["csv","json"])
  def procesare_fisier():
