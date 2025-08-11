@@ -80,12 +80,13 @@ def app():
       )
   elif choice_of_which_chart_to_use=='Map Chart' :
    if st.session_state.data is not None:
-    latitude=st.text_input("Latitude:")
-    longitude=st.text_input("Longitude:")
+    latitude=st.selectbox("Latitude:",options=df.columns)
+    longitude=st.selectbox("Longitude:",options=df.columns)
     df=st.session_state.data
     if latitude and  longitude  and latitude in df.columns and longitude in df.columns :
       data=st.dataframe(df[[latitude,longitude]])
-      grafic=st.map(latitude=latitude,longitude=longitude )
+      data.columns["lat","lot"]
+      grafic=st.map(data)
       fn='map.png'
       plt.savefig(fn)
       with open(fn,"rb") as img:
