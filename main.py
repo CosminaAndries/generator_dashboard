@@ -41,7 +41,7 @@ class Multiapp:
      with st.sidebar:
       app=option_menu(
         menu_title="Menu",
-        menu_icon=
+        menu_icon="menu.png",
         options=['Home','Cleaning','Visualization'],     
         icons=['home.png','broom.png','bar-chart.png'],
         styles={
