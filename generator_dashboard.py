@@ -7,7 +7,7 @@ st.title("DashBoard Generator")
 st.markdown("<h3 style='font-size:24px'>Upload a date file:</h3>",unsafe_allow_html=True)
 fisiere_de_incarcat=st.file_uploader(" ",type=["csv","json"])
 
-page=st.sidebar.radio("Navigare",["DataCleaning","Visualization"])
+page=st.sidebar.radio("Navigare",['Main',"DataCleaning","Visualization"])
 def procesare_fisier():
  try:
    if fisiere_de_incarcat is not None :
@@ -25,7 +25,7 @@ def procesare_fisier():
    st.error(f"Eroare la incarcarea fisierului!{e}")
     
     
- if page=="Visualizations":
+ if page=="Main":
   st.markdown("<h3 style='font-size:24px'>Upload a date file:</h3>",unsafe_allow_html=True)
   fisiere_de_incarcat=st.file_uploader(" ",type=["csv","json"])
  choice_of_which_chart_to_use=st.selectbox('What chart do you want your data to be displayed with?',('None','Bar Chart','Line Chart','Area Chart','Map Chart','Scatterplot Chart','Histograms','Pie Chart'))
