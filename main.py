@@ -41,7 +41,7 @@ class Multiapp:
         menu_title="Menu",
         menu_icon=st.image("menu.png",width=30),
         options=['Home','Cleaning','Visualization'],     
-        icons=[st.image('home.png',width=30),st.image('broom.png',width=30),st.image('bar-chart.png',width=30)],
+        icons=[st.image('home.png',width=30),st.image('broom.png',width=30),st.image('bar_chart.png',width=30)],
         styles={
           "icon":{ "color":"white", "font-size":"23px"},
           "nav-link":{"color":"white", "font-size":"23px","text-align":"left","--hover-color":"blue"},
