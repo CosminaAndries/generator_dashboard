@@ -49,11 +49,12 @@ class Multiapp:
           "nav-link-selected":{"background-color":"#02ab21"},
           }
       )
-      if app=="Home":
+    
+     if app=="Home":
         home.app()
-      elif app=="Visualization":
+     elif app=="Visualization":
         visualization_pane.app()
-      elif app=="Cleaning":
+     elif app=="Cleaning":
         data_cleaning_pane.cleaning.app()
       
   run()
