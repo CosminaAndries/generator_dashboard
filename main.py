@@ -50,7 +50,6 @@ class Multiapp:
           "nav-link-selected":{"background-color":"#02ab21"},
           }
       )
-    
      if app=="Home":
         home.app()
      elif app=="Visualization":

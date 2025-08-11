@@ -23,4 +23,6 @@ try:
 except Exception as e :
    st.error(f"Eroare la incarcarea fisierului!{e}")
   
-
+st.set_page_config(
+  page_title="Home Page"
+)
