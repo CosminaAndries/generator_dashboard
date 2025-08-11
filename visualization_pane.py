@@ -4,6 +4,7 @@ import pandas as pd
 import altair as alt
 import matplotlib.pyplot as plt
 
+st.session_state.data=None
 def procesare_fisier(fisiere_de_incarcat):
    try:
     if fisiere_de_incarcat is not None :
