@@ -28,7 +28,10 @@ class Multiapp:
           }
       )
      if app=="Home":
-        home.app()
+       st.set_page_config(
+         page_title="Data Cleaning Page"
+            )
+       home.app()
      elif app=="Visualization":
         visualization_pane.app()
      elif app=="Cleaning":
