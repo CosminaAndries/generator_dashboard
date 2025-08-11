@@ -6,31 +6,14 @@ import matplotlib.pyplot as plt
 
 
 def app():
-  st.set_page_config(
-  page_title="Visualization Page"
-  )
   st.title("Chart")
   fisiere_de_incarcat=st.file_uploader(" ",type=["csv","json"])
-  def procesare_fisier():
-   try:
-    if fisiere_de_incarcat is not None :
-     if fisiere_de_incarcat.name.endswith(".json"):
-       df=pd.read_json(fisiere_de_incarcat)
-       st.write("The data found in the files")
-       st.session_state.data=df
-       st.dataframe(df)
-     else :
-       df=pd.read_csv(fisiere_de_incarcat)
-       st.write("The data found in the files")
-       st.session_state.data=df
-       st.dataframe(df)
-   except Exception as e :
-    st.error(f"Eroare la incarcarea fisierului!{e}")
+  procesare_fisier(fisiere_de_incarcat)
   choice_of_which_chart_to_use=st.selectbox('What chart do you want your data to be displayed with?',('None','Bar Chart','Line Chart','Area Chart','Map Chart','Scatterplot Chart','Histograms','Pie Chart'))
   if choice_of_which_chart_to_use=='Bar Chart' :
    if st.session_state.data is not None:
-     x=st.text_input("What column do you use fot the x-axis:")
-     y=st.text_input("What column do you use fot the y-axis:")
+     x=st.text_input("What column do you use for the x-axis:")
+     y=st.text_input("What column do you use for the y-axis:")
      df=st.session_state.data
      if x and  y  and x in df.columns and y in df.columns :
       data=st.dataframe(df[[x,y]])
@@ -185,3 +168,18 @@ def app():
         file_name=fn,
         mime="image/png"
       )
+  def procesare_fisier(fisiere_de_incarcat):
+   try:
+    if fisiere_de_incarcat is not None :
+     if fisiere_de_incarcat.name.endswith(".json"):
+       df=pd.read_json(fisiere_de_incarcat)
+       st.write("The data found in the files")
+       st.session_state.data=df
+       st.dataframe(df)
+     else :
+       df=pd.read_csv(fisiere_de_incarcat)
+       st.write("The data found in the files")
+       st.session_state.data=df
+       st.dataframe(df)
+   except Exception as e :
+    st.error(f"Eroare la incarcarea fisierului!{e}")
