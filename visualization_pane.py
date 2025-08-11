@@ -83,7 +83,7 @@ def app():
     longitude=st.selectbox("Longitude:",options=df.columns)
     if latitude and  longitude  and latitude in df.columns and longitude in df.columns :
       df[latitude] = pd.to_numeric(df[latitude], errors='coerce')
-      sdf[longitude] = pd.to_numeric(df[longitude], errors='coerce')
+      df[longitude] = pd.to_numeric(df[longitude], errors='coerce')
       data=(df[[latitude,longitude]].copy())
       data.columns=['lat','lon']
       grafic=st.map(data)
