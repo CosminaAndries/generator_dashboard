@@ -27,7 +27,8 @@ def informatii_despre_date(df):
  st.write(df.describe())
  st.markdown("<h3 style='font-size:23px'>Columns Name</h3>",unsafe_allow_html=True)
  st.write(df.columns)
- 
+ st.markdown("<h3 style='font-size:23px'>The columns data type</h3>",unsafe_allow_html=True)
+ st.write(df.dtypes)
 
 def app():
  st.title("DashBoard Generator")
