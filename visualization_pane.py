@@ -183,9 +183,8 @@ def app():
     else:
       #labels = st.text_input('Labels (separate with commas):')
       title=st.text_input('Title:')
-      plt.title(title)
-      plt.pie(df[x])
-      st.pyplot(plt)
+      labels=st.selectbox('Selecteaza coloana de etichete')
+      st.pyplot(plt,labels=labels)
       fn='pie_chart.png'
       plt.savefig(fn)
       with open(fn,"rb") as img:
