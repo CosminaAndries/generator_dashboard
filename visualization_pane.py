@@ -184,7 +184,7 @@ def app():
       labels=st.selectbox('Selecteaza coloana de etichete',options=df.columns)
       labels=df[labels]
       plt.pie(df[x], labels=labels)
-      st.pyplot(plt,labels=labels)
+      st.pyplot(plt)
       fn='pie_chart.png'
       plt.savefig(fn)
       with open(fn,"rb") as img:
