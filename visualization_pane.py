@@ -90,7 +90,8 @@ def app():
       color=st.text_input('If you want collor you can only use RGA color code or HEX code:')
       if color=="None"or color=="No":
        color="#d59a75"
-       grafic=st.line_chart(data=df,x=x,y=y,color=color )
+       plt.scatter_chart(x=x,y=y,c=color )
+       st.pyplot(plt)
        fn='scatter.png'
        plt.savefig(fn)
        with open(fn,"rb") as img:
@@ -103,7 +104,6 @@ def app():
     else:
      x=st.multiselect("What columns do you use for the X-axis:",options=df.columns)
      y=st.st.multiselect("What columns do you use fot the y-axis:",options=df.columns)
-     df=st.session_state.data
      if x and  y and x in df.columns and y in df.columns :
       data=st.dataframe(df[[x,y]])
       x_label=st.text_input('x-label:')
@@ -111,7 +111,8 @@ def app():
       color=st.text_input('If you want collor you can only use RGA color code or HEX code:')
       if color=="None"or color=="No":
        color="#d59a75"
-       grafic=st.line_chart(data=df,x=x,y=y,color=color )
+       plt.scatter_chart(x=x,y=y,c=color )
+       st.pyplot(plt)
        fn='scatter.png'
        plt.savefig(fn)
        with open(fn,"rb") as img:
