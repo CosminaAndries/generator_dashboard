@@ -90,6 +90,7 @@ def app():
       data=pd.DataFrame(data)
       data.dropna()
       grafic=st.map(data)
+      
       fn='map.png'
       plt.savefig(fn)
       with open(fn,"rb") as img:
