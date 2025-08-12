@@ -66,10 +66,10 @@ def app():
       color=st.text_input('If you want collor you can only use RGA color code or HEX code:')
       if color=="None"or color=="No":
        color="#d59a75"
-       grafic=st.line_chart(data=df,x=x,y=y,color=color )
-       fn='scatter.png'
-       plt.savefig(fn)
-       with open(fn,"rb") as img:
+      grafic=st.line_chart(data=df,x=x,y=y,color=color )
+      fn='scatter.png'
+      plt.savefig(fn)
+      with open(fn,"rb") as img:
         btn=st.download_button(
         label="Download image",
         data=img.read(),
@@ -111,11 +111,11 @@ def app():
       color=st.text_input('If you want collor you can only use RGA color code or HEX code:')
       if color=="None"or color=="No":
        color="#d59a75"
-       plt.scatter_chart(x=x,y=y,c=color )
-       st.pyplot(plt)
-       fn='scatter.png'
-       plt.savefig(fn)
-       with open(fn,"rb") as img:
+      plt.scatter_chart(x=x,y=y,c=color )
+      st.pyplot(plt)
+      fn='scatter.png'
+      plt.savefig(fn)
+      with open(fn,"rb") as img:
         btn=st.download_button(
         label="Download image",
         data=img.read(),
@@ -158,6 +158,8 @@ def app():
         histtype="bar"
       align=st.selectbox("low","mid","right")
       color=st.text_input("Color:")
+      if color=="None"or color=="No":
+       color="#d59a75"
       log=st.text_input("Log Scale:")
       if log=='yes' or log== 'Yes' :
         log=True
