@@ -53,9 +53,4 @@ def app():
       df.dropna(axis=0)
     elif preferinta_text=="Replace with 'Unknown'":
       df.fillna('Unknown')
-    elif preferinta_text=="Replace with mode":
-    
-      
-  else : 
-    st.success("No nan or empthy values found in the dataset!")
       
