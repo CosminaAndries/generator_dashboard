@@ -42,8 +42,20 @@ def app():
   df=st.session_state.data
   coloane_valori_lipsa= verificare_coloane_null(df)
   if coloane_valori_lipsa is not None:
-    preferinta=st.selectbox("How do you want to handle the missing data",options=("Remove Columns","Replace with mean "))
-  # if preferinta=="Remove Columns" :
+    numerice=df.select_dtypes(include=['number']).columns.tolist()
+    textuale=df.select_dtypes(include=['object','string']).columns.tolist()
+    if numerice and textuale  is not None:
+     preferinta_num=st.selectbox("How do you want to handle the missing data",options=["Remove Columns","Replace with mean ","Replace with median"])
+     preferinta_text=st.selectbox("How do you want to handle the missing data",options=["Remove Columns","Replace with mode ", "Replace with 'Unknown'"])
+    if preferinta_num=="Remove Columns":
+      df.dropna(axis=1)
+    if preferinta_text=="Remove Columns":
+      df.dropna(axis=0)
+    elif preferinta_text=="Replace with 'Unknown'":
+      df.fillna('Unknown')
+    elif preferinta_text=="Replace with mode":
+    
+      
   else : 
     st.success("No nan or empthy values found in the dataset!")
       
