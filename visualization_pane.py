@@ -183,7 +183,7 @@ def app():
       title=st.text_input('Title:')
       labels=st.selectbox('Selecteaza coloana de etichete',options=df.columns)
       labels=df[labels]
-      plt.pie(df[x], labels=labels,autopct='%1.1f%%')
+      plt.pie(df[x], labels=labels,autopct='%1.1f%%',textprops={'fontsize':8})
       st.pyplot(plt)
       fn='pie_chart.png'
       plt.savefig(fn)
