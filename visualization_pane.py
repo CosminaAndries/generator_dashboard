@@ -183,6 +183,7 @@ def app():
     else:
       #labels = st.text_input('Labels (separate with commas):')
       title=st.text_input('Title:')
+      plt.title(title)
       plt.pie(df[x])
       st.pyplot(plt)
       fn='pie_chart.png'
