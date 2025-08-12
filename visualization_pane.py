@@ -155,7 +155,7 @@ def app():
   elif choice_of_which_chart_to_use=='Pie Chart':
    if st.session_state is not None:
     df=st.session_state.data
-    x=st.text_input("The values:")
+    x=st.selectbox("The values:",options=df.columns)
     optiuni_avansate=st.checkbox("Advance Options")
     if optiuni_avansate==True:
       shadow = st.selectbox("Shadow",('Yes','No') )
@@ -184,7 +184,7 @@ def app():
       #labels = st.text_input('Labels (separate with commas):')
       title=st.text_input('Title:')
       labels=st.selectbox('Selecteaza coloana de etichete',options=df.columns)
-      plt.pie(data=df[x], labels=labels)
+      plt.pie(data=df[], labels=labels)
       st.pyplot(plt,labels=labels)
       fn='pie_chart.png'
       plt.savefig(fn)
