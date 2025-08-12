@@ -78,11 +78,11 @@ def app():
       )
   elif choice_of_which_chart_to_use=='Scatterplot Chart' :
    if st.session_state.data is not None:
+    df=st.session_state.data
     info=st.checkbox("Multiple columns")
     if info==False:
      x=st.selectbox("What column do you use for the X-axis:",options=df.columns)
      y=st.st.selectbox("What column do you use fot the y-axis:",options=df.columns)
-     df=st.session_state.data
      if x and  y and x in df.columns and y in df.columns :
       data=st.dataframe(df[[x,y]])
       x_label=st.text_input('x-label:')
