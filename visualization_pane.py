@@ -84,8 +84,10 @@ def app():
     if latitude and  longitude  and latitude in df.columns and longitude in df.columns :
       df[latitude] = pd.to_numeric(df[latitude], errors='coerce')
       df[longitude] = pd.to_numeric(df[longitude], errors='coerce')
-      data=(df[[latitude,longitude]].dropna().copy())
-      data.columns=['lat','lon']
+      #data=(df[[latitude,longitude]].dropna().copy())
+      #data.columns=['lat','lon']
+      data={"lat":df.latitude,"lon":df.longitude}
+      data.dropna()
       grafic=st.map(data)
       fn='map.png'
       plt.savefig(fn)
