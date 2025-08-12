@@ -87,7 +87,7 @@ def app():
       #data=(df[[latitude,longitude]].dropna().copy())
       #data.columns=['lat','lon']
       data={"lat":df[latitude],"lon":df[longitude]}
-      data=pd.DataFrame()
+      data=pd.DataFrame(data)
       data.dropna()
       grafic=st.map(data)
       fn='map.png'
