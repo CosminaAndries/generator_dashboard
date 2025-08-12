@@ -82,7 +82,7 @@ def app():
     info=st.checkbox("Multiple columns")
     if info==False:
      x=st.selectbox("What column do you use for the X-axis:",options=df.columns)
-     y=st.st.selectbox("What column do you use fot the y-axis:",options=df.columns)
+     y=st.selectbox("What column do you use fot the y-axis:",options=df.columns)
      if x and  y and x in df.columns and y in df.columns :
       data=st.dataframe(df[[x,y]])
       x_label=st.text_input('x-label:')
