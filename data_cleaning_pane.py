@@ -20,5 +20,6 @@ def procesare_fisier(fisiere_de_incarcat):
 
 def app():
   st.title("Data Cleaning Page")
-  procesare_fisier()
+  fisiere_de_incarcat=st.file_uploader(" ",type=["csv","json"])
+  procesare_fisier(fisiere_de_incarcat)
   
