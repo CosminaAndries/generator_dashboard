@@ -19,17 +19,18 @@ def procesare_fisier(fisiere_de_incarcat):
     st.error(f"Eroare la incarcarea fisierului!{e}")
 
 def verificare_coloane_null(df):
+ coloane_valori_lipsa=[]
  for col in df.columns:
    numar=df[col].isnull().sum()
    procentaj=(numar/df.shape[0])*100
    if numar>0 :
-     coloane_valori_lipsa.append({
+    coloane_valori_lipsa.append({
     "numecoloana":col,
     "numar valori lipsa":numar,
     "procentaj":procentaj})
-     coloane_valori_lipsa=pd.DataFrame(coloane_valori_lipsa)
-     st.dataframe(coloane_valori_lipsa)
-     return coloane_valori_lipsa
+    coloane_valori_lipsa=pd.DataFrame(coloane_valori_lipsa)
+    st.dataframe(coloane_valori_lipsa)
+    return coloane_valori_lipsa
  
      
     
