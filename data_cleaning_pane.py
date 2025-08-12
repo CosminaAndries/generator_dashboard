@@ -28,7 +28,7 @@ def verificare_coloane_null(df):
     "numar valori lipsa":numar,
     "procentaj":procentaj})
  coloane_valori_lipsa=pd.DataFrame(coloane_valori_lipsa)
- st.write(coloane_valori_lipsa)
+ st.dataframe(coloane_valori_lipsa)
  return coloane_valori_lipsa
  
      
