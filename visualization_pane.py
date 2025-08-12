@@ -182,8 +182,8 @@ def app():
          mime="image/png")
     else:
       #labels = st.text_input('Labels (separate with commas):')
-      plt.pie(df[x])
       title=st.text_input('Title:')
+      plt.pie(df[x])
       st.pyplot(plt)
       fn='pie_chart.png'
       plt.savefig(fn)
