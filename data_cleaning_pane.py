@@ -28,9 +28,9 @@ def verificare_coloane_null(df):
     "numecoloana":col,
     "numar valori lipsa":numar,
     "procentaj":procentaj})
-    coloane_valori_lipsa=pd.DataFrame(coloane_valori_lipsa)
-    st.dataframe(coloane_valori_lipsa)
-    return coloane_valori_lipsa
+ coloane_valori_lipsa=pd.DataFrame(coloane_valori_lipsa)
+ st.dataframe(coloane_valori_lipsa)
+ return coloane_valori_lipsa
  
      
     
@@ -42,6 +42,8 @@ def app():
   df=st.session_state.data
   coloane_valori_lipsa= verificare_coloane_null(df)
   if coloane_valori_lipsa is not None:
-    preferinta=st.select_box("How do you want to handle the missing data",options=("Remove Columns","Replace with mean "))
+    preferinta=st.selectbox("How do you want to handle the missing data",options=("Remove Columns","Replace with mean "))
   # if preferinta=="Remove Columns" :
+  else : 
+    st.success("No nan or empthy values found in the dataset!")
       
