@@ -76,6 +76,51 @@ def app():
         file_name=fn,
         mime="image/png"
       )
+  elif choice_of_which_chart_to_use=='Scatter Chart' :
+   if st.session_state.data is not None:
+    info=st.checkbox("Multiple columns")
+    if info==False:
+     x=st.selectbox("What column do you use for the X-axis:",options=df.columns)
+     y=st.st.selectbox("What column do you use fot the y-axis:",options=df.columns)
+     df=st.session_state.data
+     if x and  y and x in df.columns and y in df.columns :
+      data=st.dataframe(df[[x,y]])
+      x_label=st.text_input('x-label:')
+      y_label=st.text_input('y label:')
+      color=st.text_input('If you want collor you can only use RGA color code or HEX code:')
+      if color=="None"or color=="No":
+       color="#d59a75"
+       grafic=st.line_chart(data=df,x=x,y=y,color=color )
+       fn='scatter.png'
+       plt.savefig(fn)
+       with open(fn,"rb") as img:
+        btn=st.download_button(
+        label="Download image",
+        data=img.read(),
+        file_name=fn,
+        mime="image/png"
+      )
+    else:
+     x=st.multiselect("What columns do you use for the X-axis:",options=df.columns)
+     y=st.st.multiselect("What columns do you use fot the y-axis:",options=df.columns)
+     df=st.session_state.data
+     if x and  y and x in df.columns and y in df.columns :
+      data=st.dataframe(df[[x,y]])
+      x_label=st.text_input('x-label:')
+      y_label=st.text_input('y label:')
+      color=st.text_input('If you want collor you can only use RGA color code or HEX code:')
+      if color=="None"or color=="No":
+       color="#d59a75"
+       grafic=st.line_chart(data=df,x=x,y=y,color=color )
+       fn='scatter.png'
+       plt.savefig(fn)
+       with open(fn,"rb") as img:
+        btn=st.download_button(
+        label="Download image",
+        data=img.read(),
+        file_name=fn,
+        mime="image/png"
+      )
   elif choice_of_which_chart_to_use=='Map Chart' :
    if st.session_state.data is not None:
     df=st.session_state.data
@@ -179,7 +224,6 @@ def app():
          file_name=fn,
          mime="image/png")
     else:
-      #labels = st.text_input('Labels (separate with commas):')
       title=st.text_input('Title:')
       labels=st.selectbox('Selecteaza coloana de etichete',options=df.columns)
       labels=df[labels]

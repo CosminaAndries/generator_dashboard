@@ -41,6 +41,6 @@ class Multiapp:
         st.set_page_config(
          page_title="Data Cleaning Page"
             )
-        data_cleaning_pane.cleaning.app()
+        data_cleaning_pane.app()
       
   run()
