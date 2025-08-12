@@ -57,5 +57,5 @@ def app():
       st.session_state=df
     elif preferinta_text=="Replace with 'Unknown'":
       df.fillna('Unknown',inplace=True)
-      st.session_state=dfs
+      st.session_state=df
       
