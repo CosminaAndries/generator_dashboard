@@ -49,8 +49,10 @@ def app():
      preferinta_text=st.selectbox("How do you want to handle the missing data",options=["Remove Columns","Replace with mode ", "Replace with 'Unknown'"])
     if preferinta_num=="Remove Columns":
       df.dropna(axis=1)
+      st.dataframe(df)
     if preferinta_text=="Remove Columns":
-      df.dropna(axis=0)
+      df.dropna(axis=1)
+      st.dataframe(df)
     elif preferinta_text=="Replace with 'Unknown'":
       df.fillna('Unknown')
       
