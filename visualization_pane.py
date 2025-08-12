@@ -90,13 +90,13 @@ def app():
       color=st.text_input('If you want collor you can only use RGA color code or HEX code:')
       if color=="None"or color=="No":
        color="#d59a75"
-       plt.scatter(x=df[x],y=df[y],c=color )
-       st.pyplot(plt)
-       fn='scatter.png'
-       plt.savefig(fn)
-       with open(fn,"rb") as img:
-        btn=st.download_button(
-        label="Download image",
+      plt.scatter(x=df[x],y=df[y],c=color )
+      st.pyplot(plt)
+      fn='scatter.png'
+      plt.savefig(fn)
+      with open(fn,"rb") as img:
+       btn=st.download_button(
+       label="Download image",
         data=img.read(),
         file_name=fn,
         mime="image/png"
