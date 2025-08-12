@@ -107,12 +107,12 @@ def app():
     bins = st.number_input("Bins:", min_value=1, max_value=100, value=10, step=1)
     optiuni_avansate=st.checkbox("Advance Options")
     if optiuni_avansate==True:
-      density = st.checkbox('Density') 
+      density = st.number('Density') 
       #range=st.number_input('Range:')
-      histtype=st.select_box("Default","barstacked","step","stepfilled")
+      histtype=st.selectbox("Default","barstacked","step","stepfilled")
       if histtype=="Default":
         histtype="bar"
-      align=st.select_box("low","mid","right")
+      align=st.selectbox("low","mid","right")
       color=st.text_input("Color:")
       log=st.text_input("Log Scale:")
       if log=='yes' or log== 'Yes' :
