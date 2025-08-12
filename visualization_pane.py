@@ -76,7 +76,7 @@ def app():
         file_name=fn,
         mime="image/png"
       )
-  elif choice_of_which_chart_to_use=='Scatter Chart' :
+  elif choice_of_which_chart_to_use=='Scatterplot Chart' :
    if st.session_state.data is not None:
     info=st.checkbox("Multiple columns")
     if info==False:
