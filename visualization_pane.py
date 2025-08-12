@@ -84,8 +84,6 @@ def app():
     df[latitude] = pd.to_numeric(df[latitude], errors='coerce')
     df[longitude] = pd.to_numeric(df[longitude], errors='coerce')
     if latitude in df.columns and longitude in df.columns :
-      #data=(df[[latitude,longitude]].dropna().copy())
-      #data.columns=['lat','lon']
       data={"lat":df[latitude],"lon":df[longitude]}
       data=pd.DataFrame(data)
       data.dropna()
@@ -184,6 +182,7 @@ def app():
       #labels = st.text_input('Labels (separate with commas):')
       title=st.text_input('Title:')
       labels=st.selectbox('Selecteaza coloana de etichete',options=df.columns)
+      labels.value_counts()
       plt.pie(df[x], labels=labels)
       st.pyplot(plt,labels=labels)
       fn='pie_chart.png'
