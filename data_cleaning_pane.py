@@ -20,7 +20,7 @@ def procesare_fisier(fisiere_de_incarcat):
 coloane_valori_lipsa=[]
 def verificare_coloane_null(df):
  for col in df.columns:
-   numar=df[col].isnull.sum()
+   numar=df[col].isnull.sum
    procentaj=(numar/df.shape[1])*100
    if numar>0 :
      coloane_valori_lipsa.apend({
