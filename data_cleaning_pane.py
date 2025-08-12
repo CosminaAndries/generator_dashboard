@@ -17,18 +17,19 @@ def procesare_fisier(fisiere_de_incarcat):
 
    except Exception as e :
     st.error(f"Eroare la incarcarea fisierului!{e}")
-coloane_valori_lipsa=[]
+
 def verificare_coloane_null(df):
  for col in df.columns:
    numar=df[col].isnull().sum()
-   procentaj=(numar/df.shape[1])*100
+   procentaj=(numar/df.shape[0])*100
    if numar>0 :
      coloane_valori_lipsa.append({
-    "numecoloana":df[col],
+    "numecoloana":col,
     "numar valori lipsa":numar,
     "procentaj":procentaj})
  coloane_valori_lipsa=pd.DataFrame(coloane_valori_lipsa)
  st.write(coloane_valori_lipsa)
+ return coloane_valori_lipsa
  
      
     
@@ -38,7 +39,7 @@ def app():
   fisiere_de_incarcat=st.file_uploader(" ",type=["csv","json"])
   procesare_fisier(fisiere_de_incarcat)
   df=st.session_state.data
-  verificare_coloane_null(df)
+  coloane_valori_lipsa= verificare_coloane_null(df)
   if coloane_valori_lipsa is not None:
     preferinta=st.select_box("How do you want to handle the missing data",options=("Remove Columns","Replace with mean "))
   # if preferinta=="Remove Columns" :
