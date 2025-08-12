@@ -23,7 +23,7 @@ def verificare_coloane_null(df):
    numar=df[col].isnull().sum()
    procentaj=(numar/df.shape[1])*100
    if numar>0 :
-     coloane_valori_lipsa.apend({
+     coloane_valori_lipsa.append({
     "numecoloana":df[col],
     "numar valori lipsa":numar,
     "procentaj":procentaj})
