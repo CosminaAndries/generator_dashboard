@@ -83,7 +83,7 @@ def app():
     longitude=st.selectbox("Longitude:",options=df.columns)
     df[latitude] = pd.to_numeric(df[latitude], errors='coerce')
     df[longitude] = pd.to_numeric(df[longitude], errors='coerce')
-    if latitude and  longitude  and latitude in df.columns and longitude in df.columns :
+    if latitude in df.columns and longitude in df.columns :
       #data=(df[[latitude,longitude]].dropna().copy())
       #data.columns=['lat','lon']
       data={"lat":df[latitude],"lon":df[longitude]}
