@@ -90,7 +90,7 @@ def app():
       color=st.text_input('If you want collor you can only use RGA color code or HEX code:')
       if color=="None"or color=="No":
        color="#d59a75"
-       plt.scatter_chart(x=x,y=y,c=color )
+       plt.scatter(x=x,y=y,c=color )
        st.pyplot(plt)
        fn='scatter.png'
        plt.savefig(fn)
