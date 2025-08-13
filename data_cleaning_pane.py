@@ -38,39 +38,53 @@ def verificare_coloane_null(df):
 
 
 def app():
-  st.title("Data Cleaning Page")
-  fisiere_de_incarcat=st.file_uploader(" ",type=["csv","json"])
-  procesare_fisier(fisiere_de_incarcat)
-  df=st.session_state.data
-  coloane_valori_lipsa= verificare_coloane_null(df)
-  if coloane_valori_lipsa is not None:
-    numerice=df.select_dtypes(include=['number']).columns.tolist()
-    textuale=df.select_dtypes(include=['object','string']).columns.tolist()
+    st.title("Data Cleaning Page")
+
+    fisiere_de_incarcat = st.file_uploader("Upload CSV or JSON", type=["csv", "json"])
+    procesare_fisier(fisiere_de_incarcat)
+
+    if 'data' not in st.session_state:
+        return  # dacă nu există date, ieșim
+
+    df = st.session_state.data
+    coloane_valori_lipsa = verificare_coloane_null(df)
+
+    if coloane_valori_lipsa.empty:
+        st.success("Nu există valori lipsă în date!")
+        return
+
+    numerice = df.select_dtypes(include=['number']).columns.tolist()
+    textuale = df.select_dtypes(include=['object', 'string']).columns.tolist()
+
+    # Tratament pentru coloanele numerice
     if numerice:
-     preferinta_num=st.selectbox("How do you want to handle the missing data",options=["None","Remove Columns","Replace with mean ","Replace with median"])
-     if preferinta_num=="Remove Columns":
-      df.dropna(axis=1, inplace=True)
-      st.dataframe(df)
-      st.session_state.data=df
-     elif preferinta_text=="Replace with mean ":
-      for col in textuale:
-       df[col].fillna(df[col].mean(),inplace=True)
-       st.session_state.data=df
-     elif preferinta_text=="Replace with median ":
-      for col in textuale:
-       df[col].fillna(df[col].median(),inplace=True)
-       st.session_state.data=df
-      
+        preferinta_num = st.selectbox(
+            "Cum doriți să tratați valorile lipsă numerice?",
+            options=["None", "Remove Columns", "Replace with mean", "Replace with median"]
+        )
+        if preferinta_num == "Remove Columns":
+            df.dropna(axis=1, inplace=True)
+        elif preferinta_num == "Replace with mean":
+            for col in numerice:
+                df[col].fillna(df[col].mean(), inplace=True)
+        elif preferinta_num == "Replace with median":
+            for col in numerice:
+                df[col].fillna(df[col].median(), inplace=True)
+        st.session_state.data = df
+        st.dataframe(df)
+
+    # Tratament pentru coloanele textuale
     if textuale:
-     preferinta_text=st.selectbox("How do you want to handle the missing data",options=["None","Remove Columns","Replace with mode ", "Replace with 'Unknown'"])
-     if preferinta_text=="Remove Columns":
-      df.dropna(axis=1,inplace=True)
-      st.dataframe(df)
-      st.session_state.data=df
-     elif preferinta_text=="Replace with 'Unknown'":
-      df.fillna('Unknown',inplace=True)
-      st.session_state.data=df
-    elif preferinta_text=="Replace with mode ":
-      for col in textuale:
-       df[col].fillna(df[col].mode()[0],inplace=True)
-       st.session_state.data=df
+        preferinta_text = st.selectbox(
+            "Cum doriți să tratați valorile lipsă textuale?",
+            options=["None", "Remove Columns", "Replace with mode", "Replace with 'Unknown'"]
+        )
+        if preferinta_text == "Remove Columns":
+            df.dropna(axis=1, inplace=True)
+        elif preferinta_text == "Replace with 'Unknown'":
+            df.fillna('Unknown', inplace=True)
+        elif preferinta_text == "Replace with mode":
+            for col in textuale:
+                df[col].fillna(df[col].mode()[0], inplace=True)
+        st.session_state.data = df
+        st.dataframe(df)
