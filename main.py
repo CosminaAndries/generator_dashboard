@@ -30,6 +30,7 @@ class Multiapp:
      if app=="Home":
        st.set_page_config(
          page_title="Home Page"
+
             )
        home.app()
      elif app=="Visualization":

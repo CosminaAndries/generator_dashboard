@@ -26,9 +26,9 @@ def verificare_coloane_null(df):
    procentaj=(numar/df.shape[0])*100
    if numar>0 :
     coloane_valori_lipsa.append({
-    "numecoloana":col,
-    "numar valori lipsa":numar,
-    "procentaj":procentaj})
+    "Name Column":col,
+    "Count of missing values":numar,
+    "The procent":procentaj})
   
  coloane_valori_lipsa=pd.DataFrame(coloane_valori_lipsa)
  st.dataframe(coloane_valori_lipsa)
@@ -59,21 +59,61 @@ def app():
       for col in textuale:
        df[col].fillna(df[col].mean(),inplace=True)
        st.session_state.data=df
+       st.download_button(
+         label="Download file",
+         data="csv",
+         file_name="file.csv",
+         mime="text/csv"
+         
+       )
      elif preferinta_num=="Replace with median ":
       for col in textuale:
        df[col].fillna(df[col].median(),inplace=True)
        st.session_state.data=df
-      
+       st.download_button(
+         label="Download file",
+         data="csv",
+         file_name="file.csv",
+         mime="text/csv"
+       )
+      st.download_button(
+         label="Download file",
+         data="csv",
+         file_name="file.csv",
+         mime="text/csv"
+         
+       )
     if textuale:
      preferinta_text=st.selectbox("How do you want to handle the missing data",options=["None","Remove Columns","Replace with mode ", "Replace with 'Unknown'"])
      if preferinta_text=="Remove Columns":
       df.dropna(axis=1,inplace=True)
       st.dataframe(df)
       st.session_state.data=df
+      st.download_button(
+         label="Download file",
+         data="csv",
+         file_name="file.csv",
+         mime="text/csv"
+         
+       )
      elif preferinta_text=="Replace with 'Unknown'":
       df.fillna('Unknown',inplace=True)
       st.session_state.data=df
+      st.download_button(
+         label="Download file",
+         data="csv",
+         file_name="file.csv",
+         mime="text/csv"
+         
+       )
     elif preferinta_text=="Replace with mode ":
       for col in textuale:
        df[col].fillna(df[col].mode()[0],inplace=True)
        st.session_state.data=df
+       st.download_button(
+         label="Download file",
+         data="csv",
+         file_name="file.csv",
+         mime="text/csv"
+         
+       )
