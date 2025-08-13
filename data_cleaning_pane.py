@@ -35,10 +35,7 @@ def verificare_coloane_null(df):
  st.dataframe(coloane_valori_lipsa)
  return coloane_valori_lipsa
  
-def verificare_outliers(df):
- numerice=df.select_dtypes(include=['number']).columns.tolist()
- for columns in numerice:
-   mean_value=df[columns].mean()
+
 
 def app():
   st.title("Data Cleaning Page")
@@ -77,7 +74,3 @@ def app():
       for col in textuale:
        df[col].fillna(df[col].mode()[0],inplace=True)
        st.session_state.data=df
-      
-      
-    verificare_outliers(df)
-      
