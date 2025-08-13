@@ -33,12 +33,16 @@ def verificare_coloane_null(df):
  coloane_valori_lipsa=pd.DataFrame(coloane_valori_lipsa)
  st.dataframe(coloane_valori_lipsa)
  return coloane_valori_lipsa
- 
+
 
 
 def app():
   st.title("Data Cleaning Page")
   fisiere_de_incarcat=st.file_uploader(" ",type=["csv","json"])
+  if 'data' in st.session_state:
+    df = st.session_state.data
+  else:
+    return
   procesare_fisier(fisiere_de_incarcat)
   df=st.session_state.data
   coloane_valori_lipsa= verificare_coloane_null(df)
@@ -51,11 +55,11 @@ def app():
       df.dropna(axis=1, inplace=True)
       st.dataframe(df)
       st.session_state.data=df
-     elif preferinta_text=="Replace with mean ":
+     elif preferinta_num=="Replace with mean ":
       for col in textuale:
        df[col].fillna(df[col].mean(),inplace=True)
        st.session_state.data=df
-     elif preferinta_text=="Replace with median ":
+     elif preferinta_num=="Replace with median ":
       for col in textuale:
        df[col].fillna(df[col].median(),inplace=True)
        st.session_state.data=df
