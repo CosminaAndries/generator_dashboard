@@ -14,7 +14,7 @@ class Multiapp:
       "title":title,
       "function":function
     })
-  def run():
+  def run(self):
      with st.sidebar:
       app=option_menu(
         menu_title="Menu",
@@ -42,5 +42,6 @@ class Multiapp:
          page_title="Data Cleaning Page"
             )
         data_cleaning_pane.app()
-      
-  run()
+    
+app = Multiapp()
+app.run()
