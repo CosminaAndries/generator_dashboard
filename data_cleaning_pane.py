@@ -49,7 +49,7 @@ def app():
   if coloane_valori_lipsa is not None:
     numerice=df.select_dtypes(include=['number']).columns.tolist()
     textuale=df.select_dtypes(include=['object','string']).columns.tolist()
-    if numerice:
+    if numerice is not None:
      preferinta_num=st.selectbox("How do you want to handle the missing data",options=["None","Remove Columns","Replace with mean ","Replace with median"])
      if preferinta_num=="Remove Columns":
       df.dropna(axis=1, inplace=True)
@@ -83,7 +83,7 @@ def app():
          mime="text/csv"
          
        )
-    if textuale:
+    if textuale is not None:
      preferinta_text=st.selectbox("How do you want to handle the missing data",options=["None","Remove Columns","Replace with mode ", "Replace with 'Unknown'"])
      if preferinta_text=="Remove Columns":
       df.dropna(axis=1,inplace=True)
