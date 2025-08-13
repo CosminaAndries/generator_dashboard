@@ -55,6 +55,13 @@ def app():
       df.dropna(axis=1, inplace=True)
       st.dataframe(df)
       st.session_state.data=df
+      st.download_button(
+         label="Download file",
+         data="csv",
+         file_name="file.csv",
+         mime="text/csv"
+         
+       )
      elif preferinta_num=="Replace with mean ":
       for col in textuale:
        df[col].fillna(df[col].mean(),inplace=True)
