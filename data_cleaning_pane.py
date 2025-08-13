@@ -1,6 +1,8 @@
 import streamlit as st
 import pandas as pd
-
+import numpy as np 
+from sklearn.neighbors import NearestNeighbors
+from scipy import stats
 def procesare_fisier(fisiere_de_incarcat):
    try:
     if fisiere_de_incarcat is not None :
@@ -28,12 +30,15 @@ def verificare_coloane_null(df):
     "numecoloana":col,
     "numar valori lipsa":numar,
     "procentaj":procentaj})
+  
  coloane_valori_lipsa=pd.DataFrame(coloane_valori_lipsa)
  st.dataframe(coloane_valori_lipsa)
  return coloane_valori_lipsa
  
-     
-    
+def verificare_outliers(df):
+ numerice=df.select_dtypes(include=['number']).columns.tolist()
+ for columns in numerice:
+   mean_value=df[columns].mean()
 
 def app():
   st.title("Data Cleaning Page")
@@ -44,18 +49,35 @@ def app():
   if coloane_valori_lipsa is not None:
     numerice=df.select_dtypes(include=['number']).columns.tolist()
     textuale=df.select_dtypes(include=['object','string']).columns.tolist()
-    if numerice and textuale  is not None:
+    if numerice:
      preferinta_num=st.selectbox("How do you want to handle the missing data",options=["None","Remove Columns","Replace with mean ","Replace with median"])
-     preferinta_text=st.selectbox("How do you want to handle the missing data",options=["None","Remove Columns","Replace with mode ", "Replace with 'Unknown'"])
-    if preferinta_num=="Remove Columns":
+     if preferinta_num=="Remove Columns":
       df.dropna(axis=1, inplace=True)
       st.dataframe(df)
       st.session_state.data=df
-    if preferinta_text=="Remove Columns":
+     elif preferinta_text=="Replace with mean ":
+      for col in textuale:
+       df[col].fillna(df[col].mean()[0],inplace=True)
+       st.session_state.data=df
+     elif preferinta_text=="Replace with median ":
+      for col in textuale:
+       df[col].fillna(df[col].median()[0],inplace=True)
+       st.session_state.data=df
+      
+    if textuale:
+     preferinta_text=st.selectbox("How do you want to handle the missing data",options=["None","Remove Columns","Replace with mode ", "Replace with 'Unknown'"])
+     if preferinta_text=="Remove Columns":
       df.dropna(axis=1,inplace=True)
       st.dataframe(df)
-      st.session_state=df
-    elif preferinta_text=="Replace with 'Unknown'":
+      st.session_state.data=df
+     elif preferinta_text=="Replace with 'Unknown'":
       df.fillna('Unknown',inplace=True)
-      st.session_state=df
+      st.session_state.data=df
+    elif preferinta_text=="Replace with mode ":
+      for col in textuale:
+       df[col].fillna(df[col].mode()[0],inplace=True)
+       st.session_state.data=df
+      
+      
+    verificare_outliers(df)
       
