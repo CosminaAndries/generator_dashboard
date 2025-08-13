@@ -57,7 +57,7 @@ def app():
       st.session_state.data=df
       st.download_button(
          label="Download file",
-         data="csv",
+         data=df,
          file_name="file.csv",
          mime="text/csv"
          
@@ -68,7 +68,7 @@ def app():
        st.session_state.data=df
        st.download_button(
          label="Download file",
-         data="csv",
+         data=df,
          file_name="file.csv",
          mime="text/csv"
          
@@ -79,13 +79,13 @@ def app():
        st.session_state.data=df
        st.download_button(
          label="Download file",
-         data="csv",
+         data=df,
          file_name="file.csv",
          mime="text/csv"
        )
       st.download_button(
          label="Download file",
-         data="csv",
+        data=df,
          file_name="file.csv",
          mime="text/csv"
          
@@ -98,7 +98,7 @@ def app():
       st.session_state.data=df
       st.download_button(
          label="Download file",
-         data="csv",
+         data=df,
          file_name="file.csv",
          mime="text/csv"
          
@@ -108,7 +108,7 @@ def app():
       st.session_state.data=df
       st.download_button(
          label="Download file",
-         data="csv",
+          data=df,
          file_name="file.csv",
          mime="text/csv"
          
@@ -119,7 +119,7 @@ def app():
        st.session_state.data=df
        st.download_button(
          label="Download file",
-         data="csv",
+          data=df,
          file_name="file.csv",
          mime="text/csv"
          
