@@ -55,50 +55,46 @@ def app():
       df.dropna(axis=1, inplace=True)
       st.dataframe(df)
       st.session_state.data=df
+      file=df.to_csv(index=True)
       st.download_button(
          label="Download file",
-         data=df,
+          data=file,
          file_name="file.csv",
          mime="text/csv"
-         
-       )
+      )
      elif preferinta_num=="Replace with mean ":
       for col in textuale:
        df[col].fillna(df[col].mean(),inplace=True)
        st.session_state.data=df
-       st.download_button(
+      file=df.to_csv(index=True)
+      st.download_button(
          label="Download file",
-         data=df,
+          data=file,
          file_name="file.csv",
          mime="text/csv"
+      )
          
-       )
      elif preferinta_num=="Replace with median ":
       for col in textuale:
        df[col].fillna(df[col].median(),inplace=True)
        st.session_state.data=df
+       file=df.to_csv(index=True)
        st.download_button(
          label="Download file",
-         data=df,
+          data=file,
          file_name="file.csv",
          mime="text/csv"
-       )
-      st.download_button(
-         label="Download file",
-        data=df,
-         file_name="file.csv",
-         mime="text/csv"
-         
-       )
+      )
     if textuale is not None:
      preferinta_text=st.selectbox("How do you want to handle the missing data",options=["None","Remove Columns","Replace with mode ", "Replace with 'Unknown'"])
      if preferinta_text=="Remove Columns":
       df.dropna(axis=1,inplace=True)
       st.dataframe(df)
       st.session_state.data=df
+      file=df.to_csv(index=True)
       st.download_button(
          label="Download file",
-         data=df,
+          data=file,
          file_name="file.csv",
          mime="text/csv"
          
@@ -106,9 +102,10 @@ def app():
      elif preferinta_text=="Replace with 'Unknown'":
       df.fillna('Unknown',inplace=True)
       st.session_state.data=df
+      file=df.to_csv(index=True)
       st.download_button(
          label="Download file",
-          data=df,
+          data=file,
          file_name="file.csv",
          mime="text/csv"
          
@@ -117,10 +114,11 @@ def app():
       for col in textuale:
        df[col].fillna(df[col].mode()[0],inplace=True)
        st.session_state.data=df
-       st.download_button(
+      file=df.to_csv(index=True)
+      st.download_button(
          label="Download file",
-          data=df,
+          data=file,
          file_name="file.csv",
          mime="text/csv"
+      )
          
-       )
