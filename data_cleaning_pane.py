@@ -54,11 +54,11 @@ def app():
       st.session_state.data=df
      elif preferinta_text=="Replace with mean ":
       for col in textuale:
-       df[col].fillna(df[col].mean()[0],inplace=True)
+       df[col].fillna(df[col].mean(),inplace=True)
        st.session_state.data=df
      elif preferinta_text=="Replace with median ":
       for col in textuale:
-       df[col].fillna(df[col].median()[0],inplace=True)
+       df[col].fillna(df[col].median(),inplace=True)
        st.session_state.data=df
       
     if textuale:
