@@ -50,40 +50,45 @@ def app():
     numerice=df.select_dtypes(include=['number']).columns.tolist()
     textuale=df.select_dtypes(include=['object','string']).columns.tolist()
     if numerice is not None:
-     preferinta_num=st.selectbox("How do you want to handle the missing data",options=["None","Remove Columns","Replace with mean ","Replace with median"])
-     if preferinta_num=="Remove Columns":
-      df.dropna(axis=1, inplace=True)
-      st.dataframe(df)
-      st.session_state.data=df
-      file=df.to_csv(index=True)
-      st.download_button(
-         label="Download file",
-          data=file,
-         file_name="file.csv",
-         mime="text/csv"
-      )
-     elif preferinta_num=="Replace with mean ":
-      for col in textuale:
-       df[col].fillna(df[col].mean(),inplace=True)
-       st.session_state.data=df
-      file=df.to_csv(index=True)
-      st.download_button(
-         label="Download file",
-          data=file,
-         file_name="file.csv",
-         mime="text/csv"
-      )
-         
-     elif preferinta_num=="Replace with median ":
-      for col in textuale:
-       df[col].fillna(df[col].median(),inplace=True)
+     lista_coloane_modificate=st.multiselect("Choose the columns or the column you want to modify:",numerice)
+     if lista_coloane_modificate is not None:
+      preferinta_num=st.selectbox("How do you want to handle the missing data",options=["None","Remove Columns","Replace with mean ","Replace with median"])
+      if preferinta_num=="Remove Columns":
+       df.dropna(axis=1, inplace=True)
+       st.dataframe(df)
        st.session_state.data=df
        file=df.to_csv(index=True)
        st.download_button(
          label="Download file",
           data=file,
          file_name="file.csv",
-         mime="text/csv"
+         mime="text/csv",
+          key="download_csv"  
+      )
+      elif preferinta_num=="Replace with mean ":
+       for col in textuale:
+        df[col].fillna(df[col].mean(),inplace=True)
+        st.session_state.data=df
+        file=df.to_csv(index=True)
+        st.download_button(
+         label="Download file",
+        data=file,
+         file_name="file.csv",
+         mime="text/csv",
+         key="download4_csv"  
+      )
+         
+      elif preferinta_num=="Replace with median ":
+       for col in textuale:
+        df[col].fillna(df[col].median(),inplace=True)
+        st.session_state.data=df
+        file=df.to_csv(index=True)
+        st.download_button(
+         label="Download file",
+          data=file,
+         file_name="file.csv",
+         mime="text/csv",
+        key="download3_csv"  
       )
     if textuale is not None:
      preferinta_text=st.selectbox("How do you want to handle the missing data",options=["None","Remove Columns","Replace with mode ", "Replace with 'Unknown'"])
@@ -96,8 +101,8 @@ def app():
          label="Download file",
           data=file,
          file_name="file.csv",
-         mime="text/csv"
-         
+         mime="text/csv",
+         key="download_csv"  
        )
      elif preferinta_text=="Replace with 'Unknown'":
       df.fillna('Unknown',inplace=True)
@@ -107,8 +112,8 @@ def app():
          label="Download file",
           data=file,
          file_name="file.csv",
-         mime="text/csv"
-         
+         mime="text/csv",
+        key="download1_csv"  
        )
     elif preferinta_text=="Replace with mode ":
       for col in textuale:
@@ -119,6 +124,7 @@ def app():
          label="Download file",
           data=file,
          file_name="file.csv",
-         mime="text/csv"
+         mime="text/csv",
+        key="download2_csv"  
       )
          
