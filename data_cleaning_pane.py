@@ -68,8 +68,8 @@ def app():
       elif preferinta_num=="Replace with mean ":
        for col in numerice:
         df[col].fillna(df[col].mean(),inplace=True)
+        st.dataframe(df)
         st.session_state.data=df
-       st.dataframe(df)
        file=df.to_csv(index=True)
        st.download_button(
          label="Download file",
@@ -82,8 +82,8 @@ def app():
       elif preferinta_num=="Replace with median ":
        for col in numerice:
         df[col].fillna(df[col].median(),inplace=True)
-        st.session_state.data=df
        st.dataframe(df)
+       st.session_state.data=df
        file=df.to_csv(index=True)
        st.download_button(
          label="Download file",
