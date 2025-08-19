@@ -39,7 +39,6 @@ def verificare_coloane_null(df):
 def app():
   st.title("Data Cleaning Page")
   fisiere_de_incarcat=st.file_uploader(" ",type=["csv","json"])
-  df=None
   if 'data' in st.session_state:
     df = st.session_state.data
   else:
@@ -47,6 +46,7 @@ def app():
   procesare_fisier(fisiere_de_incarcat)
   df=st.session_state.data
   coloane_valori_lipsa= verificare_coloane_null(df)
+  st.header("Step1:Handling Missing Values")
   if len(coloane_valori_lipsa)!=0 :
     numerice=df.select_dtypes(include=['number']).columns.tolist()
     textuale=df.select_dtypes(include=['object','string']).columns.tolist()
