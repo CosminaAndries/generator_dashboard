@@ -73,7 +73,7 @@ def app():
        file=df.to_csv(index=True)
        st.download_button(
          label="Download file",
-        data=file,
+         data=file,
          file_name="file.csv",
          mime="text/csv",
          key="replace_with_mean_download_csv"  
@@ -87,10 +87,10 @@ def app():
        file=df.to_csv(index=True)
        st.download_button(
          label="Download file",
-          data=file,
+         data=file,
          file_name="file.csv",
          mime="text/csv",
-        key="replace_with_median_download_csv"  
+         key="replace_with_median_download_csv"  
       )
     if textuale is not None:
      preferinta_text=st.selectbox("How do you want to handle the missing data",options=["None","Remove Columns","Replace with mode ", "Replace with 'Unknown'"])
