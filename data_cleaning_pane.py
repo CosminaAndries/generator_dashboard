@@ -39,6 +39,7 @@ def verificare_coloane_null(df):
 def app():
   st.title("Data Cleaning Page")
   fisiere_de_incarcat=st.file_uploader(" ",type=["csv","json"])
+  df=None
   if 'data' in st.session_state:
     df = st.session_state.data
   else:
