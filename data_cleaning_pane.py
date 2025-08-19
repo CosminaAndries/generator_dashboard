@@ -69,8 +69,8 @@ def app():
        for col in numerice:
         df[col].fillna(df[col].mean(),inplace=True)
         st.session_state.data=df
-        file=df.to_csv(index=True)
-        st.download_button(
+       file=df.to_csv(index=True)
+       st.download_button(
          label="Download file",
         data=file,
          file_name="file.csv",
@@ -82,8 +82,8 @@ def app():
        for col in numerice:
         df[col].fillna(df[col].median(),inplace=True)
         st.session_state.data=df
-        file=df.to_csv(index=True)
-        st.download_button(
+       file=df.to_csv(index=True)
+       st.download_button(
          label="Download file",
           data=file,
          file_name="file.csv",
