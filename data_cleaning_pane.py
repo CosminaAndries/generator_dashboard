@@ -28,7 +28,7 @@ def verificare_coloane_null(df):
     coloane_valori_lipsa.append({
     "Name Column":col,
     "Count of missing values":numar,
-    "The procent":procentaj})
+    "The procent":str(procentaj)+"%"})
   
  coloane_valori_lipsa=pd.DataFrame(coloane_valori_lipsa)
  st.dataframe(coloane_valori_lipsa)
@@ -42,11 +42,11 @@ def app():
   if 'data' in st.session_state:
     df = st.session_state.data
   else:
-    return
+    return 
   procesare_fisier(fisiere_de_incarcat)
   df=st.session_state.data
   coloane_valori_lipsa= verificare_coloane_null(df)
-  if coloane_valori_lipsa :
+  if len(coloane_valori_lipsa)!=0 :
     numerice=df.select_dtypes(include=['number']).columns.tolist()
     textuale=df.select_dtypes(include=['object','string']).columns.tolist()
     if numerice is not None:
@@ -127,4 +127,7 @@ def app():
          mime="text/csv",
         key="download2_csv"  
       )
+  else:
+    st.info("The file doesn't contain any empthy values !")
+    
          
