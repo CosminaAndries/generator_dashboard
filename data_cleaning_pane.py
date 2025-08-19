@@ -46,13 +46,13 @@ def app():
   procesare_fisier(fisiere_de_incarcat)
   df=st.session_state.data
   coloane_valori_lipsa= verificare_coloane_null(df)
-  if coloane_valori_lipsa is not None:
+  if coloane_valori_lipsa :
     numerice=df.select_dtypes(include=['number']).columns.tolist()
     textuale=df.select_dtypes(include=['object','string']).columns.tolist()
     if numerice is not None:
      lista_coloane_modificate=st.multiselect("Choose the columns or the column you want to modify:",numerice)
      if lista_coloane_modificate is not None:
-      preferinta_num=st.selectbox("How do you want to handle the missing data",options=["None","Remove Columns","Replace with mean ","Replace with median"])
+      preferinta_num=st.selectbox("How do you want to handle the missing data",options=["Remove Columns","Replace with mean ","Replace with median"])
       if preferinta_num=="Remove Columns":
        df.dropna(axis=1, inplace=True)
        st.dataframe(df)
