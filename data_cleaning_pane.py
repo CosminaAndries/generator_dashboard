@@ -63,7 +63,7 @@ def app():
           data=file,
          file_name="file.csv",
          mime="text/csv",
-          key="download_csv"  
+          key="remove_columns_download_csv"  
       )
       elif preferinta_num=="Replace with mean ":
        for col in numerice:
@@ -75,7 +75,7 @@ def app():
         data=file,
          file_name="file.csv",
          mime="text/csv",
-         key="download4_csv"  
+         key="replace_with_mean_download_csv"  
       )
          
       elif preferinta_num=="Replace with median ":
@@ -88,7 +88,7 @@ def app():
           data=file,
          file_name="file.csv",
          mime="text/csv",
-        key="download3_csv"  
+        key="replace_with_median_download_csv"  
       )
     if textuale is not None:
      preferinta_text=st.selectbox("How do you want to handle the missing data",options=["None","Remove Columns","Replace with mode ", "Replace with 'Unknown'"])
@@ -102,7 +102,7 @@ def app():
           data=file,
          file_name="file.csv",
          mime="text/csv",
-         key="download_csv"  
+         key="remove_columns_textuale_download_csv"  
        )
      elif preferinta_text=="Replace with 'Unknown'":
       df.fillna('Unknown',inplace=True)
@@ -113,7 +113,7 @@ def app():
           data=file,
          file_name="file.csv",
          mime="text/csv",
-        key="download1_csv"  
+        key="replace_with_unknown_csv"  
        )
     elif preferinta_text=="Replace with mode ":
       for col in textuale:
@@ -125,7 +125,7 @@ def app():
           data=file,
          file_name="file.csv",
          mime="text/csv",
-        key="download2_csv"  
+        key="replace_with_mode_download_csv"  
       )
   else:
     st.info("The file doesn't contain any empthy values !")
