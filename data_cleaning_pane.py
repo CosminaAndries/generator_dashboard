@@ -24,16 +24,19 @@ def verificare_coloane_null(df):
  for col in df.columns:
    numar=df[col].isnull().sum()
    procentaj=(numar/df.shape[0])*100
+   tip_de_date=col.d_type()
    if numar>0 :
     coloane_valori_lipsa.append({
     "Name Column":col,
     "Count of missing values":numar,
-    "The procent":str(procentaj)+"%"})
+    "The procent":str(procentaj)+"%",
+    "Data type":tip_de_date})
   
  coloane_valori_lipsa=pd.DataFrame(coloane_valori_lipsa)
  st.dataframe(coloane_valori_lipsa)
  return coloane_valori_lipsa
 
+#def verificare_duplicate
 
 
 def app():
@@ -46,9 +49,9 @@ def app():
   procesare_fisier(fisiere_de_incarcat)
   df=st.session_state.data
   coloane_valori_lipsa= verificare_coloane_null(df)
-  st.header("Step1:Handling Missing Values")
+  st.subheader("Step 1 :Handling Missing Values")
   if len(coloane_valori_lipsa)!=0 :
-    numerice=df.select_dtypes(include=['number']).columns.tolist()
+    numerice=df.select_dtypes(include=['number']).coloanetolist()
     textuale=df.select_dtypes(include=['object','string']).columns.tolist()
     if numerice is not None:
      lista_coloane_modificate=st.multiselect("Choose the columns or the column you want to modify:",numerice)
@@ -132,5 +135,15 @@ def app():
       )
   else:
     st.info("The file doesn't contain any empthy values !")
+  step2_button=st.radio("Do you want to remove the duplicates:",["Yes","No"])
+  if step2_button=="Yes":
+   st.subheader("Step 2 Removing Duplicates")
+   #verificare_duplicate()
+   
+  step2_button=st.radio("Do you want to convert any columns data type:",["Yes","No"])
+  if step2_button=="Yes":
+   st.subheader("Step 2 Conversion of Data Types")
+   #  numerice=df.select_dtypes(include=['number']).coloanetolist()
+   # textuale=df.select_dtypes(include=['object','string']).columns.tolist()
     
          
